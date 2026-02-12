@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title></title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<body>
+
+<div class="app-container" id="app-wrapper">
+  
+  <div id="overlay-mobile" onclick="toggleSidebar()"></div>
+
+  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><h2></h2></div>
+    
+    <div class="botoes-financeiros">
+    
+    <button onclick="window.location.href='economias.html'" class="btn-card btn-economias">
+        <i class="fa-solid fa-piggy-bank"></i>
+        <span>🐷Economias🐷</span>
+    </button>
+
+    <button onclick="window.location.href='despesas.html'" class="btn-card btn-despesas">
+        <i class="fa-solid fa-file-invoice-dollar"></i>
+        <span>💸Despesas💸</span>
+    </button>
+
+
+    <nav id="menu-meses" class="menu-meses-grid"></nav>
+
+    <div class="backup-area">
+      <button id="btn-tema" onclick="alternarTema()" style="width:100%; padding:12px; margin-bottom:15px; background:var(--primary); color:white; border:none; border-radius:8px; cursor:pointer; font-weight:bold; display:flex; align-items:center; justify-content:center; gap:10px;">
+        🌗 Mudar Tema
+      </button>
+
+      <button class="btn-backup" onclick="exportarDados()">💾 Exportar Backup</button>
+      <button class="btn-backup" onclick="document.getElementById('input-import').click()">📂 Importar Backup</button>
+      <input type="file" id="input-import" style="display:none" onchange="importarDados(event)" accept=".json">
+      
+      <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
+
+      <button class="btn-reset" onclick="resetarSistema()">
+          ☠️ ZERAR TUDO
+      </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header>
+      <h1 id="titulo-pagina">Janeiro</h1>
+      
+      <div class="dashboard" id="painel-resumo">
+        <div class="card card-atrasado">
+            <h3>🔴 Atrasado</h3>
+            <p id="totalAtrasados">R$ 0,00</p>
+        </div>
+        <div class="card card-pendente">
+            <h3>🟠 Restante</h3>
+            <p id="totalPendentes">R$ 0,00</p>
+        </div>
+        <div class="card card-recebido">
+            <h3>🟢 Recebido</h3>
+            <p id="totalRecebido">R$ 0,00</p>
+        </div>
+      </div>
+
+      <button id="btn-abrir-cadastro" onclick="toggleFormCadastro()">
+          <span class="btn-text">Novo Cadastro</span>
+          <span class="btn-icon">➕</span>
+      </button>
+
+      <div class="busca-container">
+        <input type="text" id="buscaNome" placeholder="🔍 Buscar cliente em tudo...">
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-aba="atrasados" onclick="mudarAba('atrasados')">🔴 Devendo</button>
+        <button class="tab-btn" data-aba="pendentes" onclick="mudarAba('pendentes')">🟠 A Pagar</button>
+        <button class="tab-btn" data-aba="pagos" onclick="mudarAba('pagos')">🟢 Pagos</button>
+        <button class="tab-btn" data-aba="parcelados" onclick="mudarAba('parcelados')">📅 Parcelados</button>
+      </div>
+    </header>
+
+    <ul id="listaPrincipal"></ul>
+  </main>
+</div>
+
+<div id="modalWhatsapp" class="modal-geral">
+  <div class="modal-content">
+    <span class="close-modal" onclick="fecharModalWhats()">&times;</span>
+    <h3 id="whats-titulo" style="margin-bottom: 15px;">Enviar Mensagem</h3>
+    <div id="lista-mensagens" style="display: flex; flex-direction: column; gap: 10px;"></div>
+  </div>
+</div>
+
+<div id="container-cadastro" class="modal-geral">
+  <section class="modal-content">
+    <span class="close-modal" onclick="toggleFormCadastro()">×</span>
+    <h3>Novo Lançamento</h3>
+    <div class="form-grid">
+      <input type="text" id="nome" placeholder="Nome do Cliente">
+      <input type="tel" id="telefone" placeholder="WhatsApp">
+      <div style="display:flex; gap:10px;">
+        <input type="number" id="valor" placeholder="Valor Total" style="flex:1">
+        <input type="date" id="data" style="flex:1">
+      </div>
+      <select id="repetir">
+        <option value="1">Única</option>
+        <option value="4">4× semanal</option>
+        <option value="8">8× semanal</option>
+        <option value="12">12× semanal</option>
+      </select>
+      <button class="btn-acao-principal" onclick="adicionarCobranca()">Cadastrar</button>
+    </div>
+  </section>
+</div>
+
+<div id="modalEdicao" class="modal-geral">
+  <div class="modal-content">
+    <span class="close-modal" onclick="fecharModal()">×</span>
+    <h3>Editar Lançamento</h3>
+    <input type="hidden" id="edit-id">
+    <div class="form-edit">
+      <label>Nome</label><input type="text" id="edit-nome">
+      <div style="display:flex; gap:10px;">
+        <div style="flex:1"><label>Total</label><input type="number" id="edit-valor" step="0.01"></div>
+        <div style="flex:1"><label>Pago</label><input type="number" id="edit-pago-parcial" step="0.01"></div>
+      </div>
+      <label>Data</label><input type="date" id="edit-data">
+      <button class="btn-salvar-modal" onclick="salvarEdicao()">Atualizar Dados</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1042 @@
+:root {
+  /* --- TEMA PADRÃO (DARK MODE) --- */
+  --primary: #3498db;
+  --success: #2ecc71;
+  --warning: #f1c40f;
+  --danger: #e74c3c;
+  
+  --bg-body: #121212;
+  --bg-surface: #1e1e1e;
+  --bg-input: #2d2d2d;
+  --bg-sublista: #181818; /* Fundo da lista expandida ESCURO */
+  
+  --text-main: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --text-destaque: #ffffff; /* Texto dos itens na lista */
+  
+  --border-color: #333333;
+  --dark-sidebar: #000000;
+  
+  --badge-bg: #333333;
+  --badge-text: #ffffff;
+}
+
+/* --- TEMA CORPORATIVO (LIGHT MODE - CORRIGIDO) --- */
+body.light-mode {
+  --primary: #0984e3;
+  --success: #00b894;
+  --warning: #fdcb6e;
+  --danger: #d63031;
+  
+  --bg-body: #f4f7f6;      /* Fundo cinza gelo */
+  --bg-surface: #ffffff;   /* Branco puro */
+  --bg-input: #ffffff;
+  --bg-sublista: #f8f9fa;  /* Fundo da lista expandida CLARO */
+  
+  --text-main: #2c3e50;
+  --text-muted: #636e72;
+  --text-destaque: #2d3436; /* Texto dos itens ESCURO */
+  
+  --border-color: #dfe6e9;
+  
+  --dark-sidebar: #2c3e50; /* Azul Corporativo */
+  --badge-bg: #dfe6e9;
+  --badge-text: #2d3436;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+.app-container { display: flex; height: 100vh; transition: 0.3s; }
+
+/* SIDEBAR */
+#toggle-sidebar { 
+  position: fixed; top: 15px; left: 15px; z-index: 1100; 
+  background: var(--bg-surface); color: var(--primary); border: 1px solid var(--border-color);
+  width: 42px; height: 42px; border-radius: 10px; cursor: pointer; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+.sidebar { 
+  width: 260px; 
+  background: var(--dark-sidebar); 
+  color: white; 
+  padding: 80px 15px 20px; 
+  display: flex; 
+  flex-direction: column; 
+  transition: 0.3s; 
+  flex-shrink: 0; 
+  overflow-y: auto; 
+  border-right: 1px solid var(--border-color);
+  
+  /* --- CORREÇÃO IMPORTANTE --- */
+  z-index: 1050; /* Garante que fique ACIMA do overlay (que é 1040) */
+  position: relative; /* Necessário para o z-index funcionar */
+}
+
+/* ADICIONE ISTO PARA O MENU FLUTUAR NO CELULAR */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed; /* Flutua por cima de tudo */
+        height: 100vh;   /* Ocupa altura total */
+        left: 0;
+        top: 0;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5); /* Sombra lateral */
+    }
+    
+    /* Quando fechada no mobile, sai da tela pela esquerda */
+    .sidebar-closed .sidebar {
+        transform: translateX(-100%); /* Move para fora */
+        margin-left: 0; /* Remove a margem negativa do desktop */
+    }
+}
+.menu-meses-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+
+.menu-meses-grid button { 
+  width: 100%; padding: 12px 15px; background: rgba(255,255,255,0.05); 
+  border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); 
+  border-radius: 8px; cursor: pointer; text-align: left; 
+  font-size: 0.95rem; transition: 0.2s; display: flex; justify-content: space-between;
+}
+.menu-meses-grid button:hover { background: rgba(255,255,255,0.15); color: white; }
+.menu-meses-grid button.active { 
+  background: var(--primary); color: white; font-weight: bold; 
+  border-color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+}
+
+/* BOTÕES GERAIS */
+.btn-backup { 
+  width: 100%; padding: 10px; margin-top: 5px; 
+  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); 
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; 
+  cursor: pointer; text-align: left; font-size: 0.85rem; 
+}
+.btn-backup:hover { color: white; background: rgba(255,255,255,0.15); }
+
+/* =========================================
+   BOTÃO NOVO CADASTRO (DESIGN PREMIUM)
+   ========================================= */
+
+/* --- ESTILO BASE (DESKTOP) --- */
+#btn-abrir-cadastro {
+    /* Reset e Base */
+    all: unset; /* Remove estilos nativos feios */
+    background: linear-gradient(135deg, var(--primary), #4facfe); /* Gradiente */
+    color: white;
+    
+    /* Tamanho e Forma */
+    padding: 12px 24px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    
+    /* Alinhamento Perfeito (Evita ficar torto) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+    /* Comportamento */
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Sombra Bonita (Colorida e difusa) */
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+#btn-abrir-cadastro:hover {
+    transform: translateY(-3px); /* Flutua ao passar o mouse */
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+    filter: brightness(1.05);
+}
+
+#btn-abrir-cadastro:active {
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+/* Configuração do Ícone no Desktop (Opcional: aqui está oculto) */
+#btn-abrir-cadastro .btn-icon { display: none; }
+
+
+/* =========================================
+   AJUSTES MOBILE (TRANSFORMA EM FAB)
+   ========================================= */
+@media (max-width: 600px) {
+    #btn-abrir-cadastro {
+        /* Posicionamento Fixo */
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        margin: 0;
+        z-index: 9999;
+        
+        /* Forma de Círculo Perfeito */
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        padding: 0;
+        
+        /* Sombra mais forte para destacar do fundo */
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Esconde o TEXTO no mobile */
+    #btn-abrir-cadastro .btn-text {
+        display: none;
+    }
+
+    /* Mostra e Centraliza o ÍCONE no mobile */
+    #btn-abrir-cadastro .btn-icon {
+        display: flex; /* Flex para centralizar o SVG/Caractere */
+        align-items: center;
+        justify-content: center;
+        font-size: 28px; /* Ícone grande */
+        line-height: 1;  /* Remove espaçamento extra da fonte */
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Ajuste Crítico: Empurra o conteúdo para cima 
+       para o botão não cobrir o último card 
+    */
+    .main-content {
+        padding-bottom: 120px !important;
+    }
+}
+
+
+/* =========================================
+   DASHBOARD & LAYOUT GERAL
+   ========================================= */
+.main-content { 
+    flex: 1; 
+    padding: 30px; 
+    padding-top: 80px; /* Espaço para o header/menu */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+.dashboard { 
+    display: grid; 
+    /* Responsivo inteligente: ajusta colunas automaticamente */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 20px; 
+    margin-bottom: 30px; 
+}
+
+/* Ajuste fino para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 400px) {
+    .dashboard {
+        grid-template-columns: 1fr; /* Força 1 coluna se a tela for muito estreita */
+    }
+}
+/* --- CARDS DE VALORES (ESTILO NEON GLASS) --- */
+.card {
+    background: rgba(30, 30, 30, 0.6); /* Fundo escuro translúcido */
+    backdrop-filter: blur(10px);        /* Desfoque do fundo */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.card h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    opacity: 0.9;
+    font-weight: 700;
+}
+
+.card p {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* CARD ATRASADO (Vermelho Neon) */
+.card-atrasado {
+    box-shadow: 0 10px 30px -10px rgba(231, 76, 60, 0.3);
+    border-bottom: 2px solid var(--danger);
+}
+.card-atrasado::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(231, 76, 60, 0.15) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+.card-atrasado h3 { color: #ff6b6b; }
+
+/* CARD PENDENTE/RESTANTE (Amarelo Neon) */
+.card-pendente {
+    box-shadow: 0 10px 30px -10px rgba(241, 196, 15, 0.3);
+    border-bottom: 2px solid var(--warning);
+}
+.card-pendente::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(241, 196, 15, 0.15) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+.card-pendente h3 { color: #f1c40f; }
+
+/* CARD RECEBIDO/PAGO (Verde Neon) */
+.card-recebido {
+    box-shadow: 0 10px 30px -10px rgba(46, 204, 113, 0.3);
+    border-bottom: 2px solid var(--success);
+}
+.card-recebido::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(46, 204, 113, 0.15) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
+}
+.card-recebido h3 { color: #2ecc71; }
+
+/* Efeito Hover nos Cards */
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    filter: brightness(1.2);
+}
+
+/* LISTAS E PASTAS */
+.busca-container input { 
+  width: 100%; padding: 15px; border-radius: 12px; 
+  border: 1px solid var(--border-color); background: var(--bg-surface); 
+  color: var(--text-main); margin-bottom: 20px; outline: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.item-agrupado { 
+  border-radius: 12px; margin-bottom: 15px; 
+  border: 1px solid var(--border-color); overflow: hidden; 
+  background: var(--bg-surface); box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
+}
+
+.pasta-header-parcela { 
+  display: flex; justify-content: space-between; align-items: center; 
+  padding: 18px 25px; cursor: pointer; background: var(--bg-surface); color: var(--text-main);
+  font-weight: bold; border-left: 6px solid var(--dark-sidebar); transition: 0.2s;
+}
+.pasta-header-parcela:hover { filter: brightness(0.95); }
+
+/* Correção da etiqueta de valor */
+.pasta-header-parcela span:last-child {
+  background-color: var(--badge-bg) !important;
+  color: var(--badge-text) !important;
+  border: 1px solid var(--border-color);
+  padding: 4px 10px; border-radius: 15px; font-size: 0.8rem;
+}
+
+/* AQUI ESTAVA O PROBLEMA: CORRIGIDO COM VARIÁVEL */
+.sub-lista { 
+  display: none; 
+  border-top: 1px solid var(--border-color); 
+  background: var(--bg-sublista); /* Agora muda cor conforme o tema */
+  padding: 5px 0;
+}
+.item-agrupado.aberto .sub-lista { display: block; }
+
+/* ITENS DA LISTA - Ajustados para legibilidade em ambos os temas */
+.atrasado-row, .pendente-row, .pago-row { 
+    padding: 15px; 
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-destaque) !important; /* Cor do texto principal */
+}
+
+/* No Light Mode, usamos fundos sólidos muito claros. No Dark Mode, usamos transparência */
+body:not(.light-mode) .atrasado-row { background: rgba(231, 76, 60, 0.1); border-left: 4px solid var(--danger); }
+body:not(.light-mode) .pendente-row { background: rgba(241, 196, 15, 0.1); border-left: 4px solid var(--warning); }
+body:not(.light-mode) .pago-row { background: rgba(46, 204, 113, 0.1); border-left: 4px solid var(--success); }
+
+/* No Light Mode, cores pasteis sólidas para limpeza visual */
+body.light-mode .atrasado-row { background: #fff5f5; border-left: 4px solid var(--danger); }
+body.light-mode .pendente-row { background: #fffcf2; border-left: 4px solid var(--warning); }
+body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--success); }
+
+.progress-container { height: 8px; background: rgba(0,0,0,0.1); border-radius: 10px; margin: 12px 0 6px; overflow: hidden; }
+.progress-bar { height: 100%; background: linear-gradient(90deg, var(--success), #27ae60); border-radius: 10px; }
+
+.info-valores { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-top: 5px; }
+
+/* MODAL */
+.modal-geral { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 2000; align-items: center; justify-content: center; }
+
+.modal-content { 
+  background: var(--bg-surface); padding: 40px; border-radius: 20px; 
+  width: 95%; max-width: 450px; position: relative; 
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2); border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.form-grid input, .form-edit input, select { 
+  padding: 15px; border: 1px solid var(--border-color); border-radius: 10px; 
+  font-size: 1rem; width: 100%; outline: none; transition: 0.3s;
+  background: var(--bg-input); color: var(--text-main);
+}
+.form-grid input:focus { border-color: var(--primary); }
+
+.btn-acao-principal, .btn-salvar-modal { 
+  background: var(--primary); color: white; padding: 16px; border: none; 
+  border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.05rem; 
+}
+.btn-salvar-modal { background: var(--success); }
+.close-modal { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: var(--text-muted); }
+
+/* BOTÕES AÇÕES */
+.acoes { display: flex; gap: 6px; }
+.acoes button { 
+  width: 36px; height: 36px; border: none; border-radius: 8px; 
+  cursor: pointer; color: white; font-size: 1rem; transition: 0.2s; 
+  display: flex; align-items: center; justify-content: center; 
+}
+.acoes button:hover { transform: scale(1.1); }
+.btn-proximo { background: var(--warning); color: #333 !important; }
+.btn-whatsapp { background: #25D366; }
+.btn-editar { background: var(--primary); }
+.btn-pagar { background: #34495e; }
+.btn-excluir { background: #ffcccc; color: var(--danger)!important; }
+
+/* TABS */
+.tabs { display: flex; gap: 12px; margin-bottom: 25px; overflow-x: auto; padding: 10px 5px; scrollbar-width: none; }
+.tab-btn { 
+  padding: 12px 25px; border: 1px solid var(--border-color); 
+  background: var(--bg-surface); color: var(--text-muted); 
+  cursor: pointer; border-radius: 50px; white-space: nowrap; 
+  font-weight: 700; font-size: 0.95rem; 
+  transition: 0.3s; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.tab-btn:hover { transform: translateY(-3px); border-color: var(--primary); color: var(--primary); }
+.tab-btn.active { 
+  background: var(--dark-sidebar); color: white; border-color: transparent;
+  transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+
+
+
+/* --- ESTILOS DA PÁGINA DE ECONOMIAS --- */
+.painel-economias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: var(--bg-surface);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.saldo-grande small { color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+.saldo-grande h2 { font-size: 3.5rem; color: var(--success); margin-top: 10px; }
+
+.controles-economias { display: flex; flex-direction: column; gap: 15px; }
+
+.input-grupo input {
+    background: var(--bg-input); color: var(--text-main);
+    border: 1px solid var(--border-color); padding: 15px;
+    border-radius: 10px; width: 100%; margin-bottom: 10px;
+    font-size: 1rem; outline: none;
+}
+.input-grupo input:focus { border-color: var(--primary); }
+
+.botoes-acao { display: flex; gap: 15px; }
+.botoes-acao button {
+    flex: 1; padding: 15px; border: none; border-radius: 10px;
+    font-weight: bold; cursor: pointer; font-size: 1rem; color: white;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: transform 0.2s;
+}
+.botoes-acao button:hover { transform: translateY(-3px); }
+
+.btn-depositar { background: var(--success); box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3); }
+.btn-sacar { background: var(--danger); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); }
+
+/* Item do Extrato */
+.item-extrato {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px; background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 5px; border-radius: 8px;
+}
+.tipo-deposito { color: var(--success); font-weight: bold; }
+.tipo-saque { color: var(--danger); font-weight: bold; }
+.data-extrato { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .painel-economias { grid-template-columns: 1fr; }
+    .saldo-grande h2 { font-size: 2.5rem; }
+}
+
+/* Estilo das Abas na Página de Economias */
+.tabs-eco-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: var(--bg-card);
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.tab-eco {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+
+.tab-eco.active {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Ajuste para ícones dentro do botão */
+.tab-eco i {
+    margin-right: 8px;
+}
+
+
+
+
+
+/* Botão de Reset Nuclear */
+.btn-reset {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(145deg, #c0392b, #a93226);
+    color: white;
+    border: 1px solid #e74c3c;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    margin-top: 10px;
+}
+
+.btn-reset:hover {
+    background: #e74c3c;
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    border-color: #ff7675;
+}
+
+/* --- OTIMIZAÇÃO MOBILE --- */
+@media (max-width: 600px) {
+  /* 1. Ajuste da Main Content para não ser sufocada pela sidebar */
+  .main-content {
+    padding: 15px;
+    padding-top: 70px; /* Espaço para o botão de menu */
+    padding-bottom: 120px !important; /* IMPORTANTE: Espaço para o botão flutuante não cobrir nada */
+  }
+
+  /* 2. Cards do Dashboard em Grid 2x2 ou 1x1 */
+  .dashboard {
+    grid-template-columns: 1fr; /* Um por linha para facilitar leitura */
+    gap: 10px;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  .card p {
+    font-size: 1.5rem;
+  }
+
+  /* 3. Botões de Ação maiores (Fácil de clicar com o polegar) */
+  .acoes {
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .acoes button {
+    width: 45px; /* Maior para o toque */
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  /* 4. Tabs com Scroll Suave */
+  .tabs {
+    gap: 8px;
+    padding-bottom: 15px;
+  }
+  
+  .tab-btn {
+    padding: 10px 18px;
+    font-size: 0.85rem;
+  }
+
+  /* 5. Ajuste no formulário de cadastro (Modal) */
+  .modal-content {
+    padding: 25px 15px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .form-grid, .form-edit {
+    gap: 12px;
+  }
+  
+  /* Ajuste das informações de valores (Pago/Falta) */
+  .info-valores {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+
+  /* OBS: REMOVI AS REGRAS DO #btn-abrir-cadastro DAQUI 
+     PORQUE ELAS JÁ ESTÃO DEFINIDAS NO BLOCO "DESIGN PREMIUM" ACIMA */
+}
+
+
+
+.sidebar-header h2, 
+#titulo-pagina {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+    
+    /* CORRIGIDO: Usa cor sólida baseada no tema, e gradiente apenas se suportado */
+    color: var(--text-main); 
+    
+    /* Gradiente apenas no Dark Mode para dar efeito metalizado */
+    background: linear-gradient(90deg, var(--text-main), var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+/* --- ANIMAÇÃO PULSE --- */
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
+
+/* Atualize o estilo do botão para incluir a animação */
+#btn-abrir-cadastro {
+    /* Mantém os estilos anteriores de gradiente ou vidro que definimos */
+    background: linear-gradient(135deg, #2980b9, #6dd5fa); /* Um azul mais elétrico */
+    color: white;
+    
+    /* Adiciona a animação */
+    animation: pulse-glow 2s infinite;
+    
+    /* Garante que o texto/ícone brilhe */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Remove a animação ao passar o mouse para dar feedback tátil */
+#btn-abrir-cadastro:hover {
+    animation: none;
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+/* --- SCROLLBAR MODERNA (Estilo iOS/Mac) --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Fundo invisível */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(128, 128, 128, 0.3); /* Discreto */
+    border-radius: 20px;
+    border: 2px solid transparent; /* Cria uma margem interna */
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary); /* Cor ao passar o rato */
+}
+
+
+
+
+
+/* --- OVERLAY MOBILE (FUNDO ESCURO) --- */
+#overlay-mobile {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Preto transparente */
+    backdrop-filter: blur(4px);      /* Desfoque elegante */
+    z-index: 1040; /* Fica ABAIXO da sidebar (1050), mas ACIMA do conteúdo */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* MOSTRAR OVERLAY APENAS NO MOBILE E QUANDO ABERTO */
+@media (max-width: 768px) {
+    /* A lógica é: Se o #app-wrapper NÃO tiver a classe .sidebar-closed,
+       significa que o menu está ABERTO. Então mostramos o overlay.
+    */
+    #app-wrapper:not(.sidebar-closed) #overlay-mobile {
+        display: block;
+        opacity: 1;
+        pointer-events: auto; /* Permite clicar para fechar */
+    }
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* --- INPUTS PREMIUM --- */
+input, select, textarea {
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--border-color);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); /* Anel de luz suave */
+    outline: none;
+    background-color: var(--bg-surface); /* Garante contraste */
+}
+
+.pagina-economias .app-container {
+    display: block !important;
+}
+
+.pagina-economias .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-top: 80px; /* Espaço para o botão de voltar não cobrir o título */
+}
+
+/* Esconde o botão de hambúrguer (☰) caso ele apareça nesta página */
+.pagina-economias #toggle-sidebar {
+    display: none !important;
+}
+
+
+/* No seu style.css, substitua ou adicione estas regras */
+@media (max-width: 600px) {
+    .painel-economias {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .botoes-acao {
+        flex-direction: column; /* Botões um em cima do outro */
+    }
+
+    .saldo-grande h2 {
+        font-size: 2.2rem; /* Evita que o saldo "vaze" da tela */
+    }
+}
+
+.btn-transferir {
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.btn-transferir:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-resgatar-total {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.2);
+}
+.btn-resgatar-total:hover {
+    transform: translateY(-2px);
+    background: #8e44ad;
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+}
+
+#lista-mensagens button {
+    background: var(--bg-input, #f8f9fa);
+    color: var(--text-main, #333);
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#lista-mensagens button:hover {
+    border-color: #25d366; /* Cor do WhatsApp */
+    background: rgba(37, 211, 102, 0.1);
+}
+
+.modal-geral {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center; justify-content: center;
+}
+
+
+
+
+
+
+/* --- CONFIGURAÇÃO GERAL --- */
+.botoes-financeiros {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn-card {
+    font-family: 'Montserrat', sans-serif; /* Fonte bonita */
+    
+    width: 100%;
+    height: 40px; /* Altura confortável */
+    border: 1px solid #333; /* Borda sutil */
+    border-radius: 8px;
+    
+    /* --- A MÁGICA DO MINIMALISMO --- */
+    background-color: #1a1a1a; /* Cinza quase preto (Grafite) */
+    color: #ffffff;            /* Texto branco */
+    /* ------------------------------ */
+
+    cursor: pointer;
+    
+    /* Layout */
+    display: flex;
+    flex-direction: row; 
+    align-items: center;     
+    justify-content: center; 
+    gap: 12px;               
+    
+    /* Texto */
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Espaçamento largo = Elegância */
+    
+    transition: all 0.3s ease;
+}
+
+/* --- CORES APENAS NOS DETALHES (HOVER) --- */
+
+/* Economias: Fica laranja só na borda e no texto ao passar o mouse */
+.btn-economias:hover {
+    border-color: #f39c12;
+    color: #f39c12;
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+/* Despesas: Fica vermelho só na borda e no texto ao passar o mouse */
+.btn-despesas:hover {
+    border-color: #e74c3c;
+    color: #e74c3c;
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+
+/* Container da lista */
+.container-despesas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espaço entre cada despesa */
+    padding: 10px;
+    max-width: 600px; /* Largura máxima para não esticar demais em telas grandes */
+    margin: 0 auto; /* Centraliza na tela */
+}
+
+/* O Cartão da Despesa (Cada linha) */
+.card-despesa {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    
+    /* Sombra super suave para dar profundidade sem poluir */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f0f0f0; /* Borda quase invisível */
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Separa texto do valor */
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* Detalhe sutil: Borda esquerda vermelha para indicar despesa */
+    border-left: 4px solid #ff4757; 
+}
+
+/* Efeito ao passar o mouse */
+.card-despesa:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Área do ícone (Bolinha cinza clara) */
+.icone-categoria {
+    width: 40px;
+    height: 40px;
+    background-color: #f7f7f7;
+    border-radius: 50%; /* Faz ficar redondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #666; /* Cor do ícone */
+}
+
+/* Área de Texto (Nome e Data) */
+.detalhes-despesa {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Ocupa o espaço disponível */
+}
+
+.detalhes-despesa .titulo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.detalhes-despesa .data {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    color: #999; /* Cinza claro para não chamar atenção */
+}
+
+/* O Valor (Dinheiro) */
+.valor-despesa {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #e74c3c; /* Vermelho sóbrio e elegante */
+    letter-spacing: 0.5px;
+}
+
+/* --- REGRA QUE FALTAVA PARA O DESKTOP --- */
+.sidebar-closed .sidebar {
+    margin-left: -260px; /* Esconde a sidebar puxando ela para fora da tela */
+}
+
+/* Opcional: Ajuste fino para o botão acompanhar o movimento ou ficar fixo */
+.sidebar-closed #toggle-sidebar {
+    left: 15px; /* Mantém o botão sempre acessível */
+}
+
+.modal-geral {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-geral.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--bg-surface);
+  padding: 25px;
+  border-radius: 12px;
+  width: 95%;
+  max-width: 420px;
+  animation: fadeIn .2s ease;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.linha-dupla {
+  display: flex;
+  gap: 10px;
+}
+
+.recorrente-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.lista-item {
+  background: var(--bg-surface);
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--danger);
+}
+
+.lista-item.pago {
+  border-left-color: var(--success);
+}
+
+.lista-item.atrasado {
+  border-left-color: #c0392b;
+}
+
+.lista-info {
+  flex: 1;
+}
+
+.lista-acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-editar { background: var(--primary); }
+.btn-check { background: var(--success); }
+.btn-check.pago { background: #f1c40f; }
+.btn-excluir { background: var(--danger); }

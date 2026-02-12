@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Controle de Despesas</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="app-container">
+  
+  <div id="overlay-mobile"></div>
+  <button id="toggle-sidebar">☰</button>
+
+  <aside class="sidebar">
+    <div class="botoes-financeiros">
+        <button onclick="window.location.href='index.html'" class="btn-card">
+            <i class="fa-solid fa-house"></i>
+            <span>Início</span>
+        </button>
+
+        <button onclick="window.location.href='economias.html'" class="btn-card btn-economias">
+            <i class="fa-solid fa-piggy-bank"></i>
+            <span>Economias</span>
+        </button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header>
+
+      <h1>Despesas Fixas & Contas</h1>
+
+      <div class="controle-mes">
+        <button onclick="mudarMes(-1)">⬅</button>
+        <strong id="mesAtualLabel"></strong>
+        <button onclick="mudarMes(1)">➡</button>
+      </div>
+
+      <div class="dashboard">
+        <div class="card card-pagar">
+            <h3>🔴 Total a Pagar</h3>
+            <p id="totalPagar"></p>
+        </div>
+
+        <div class="card card-pago">
+            <h3>🟢 Total Pago</h3>
+            <p id="totalPago"></p>
+        </div>
+
+        <div class="card card-geral">
+            <h3>💰 Total Geral</h3>
+            <p id="totalGeral"></p>
+        </div>
+      </div>
+
+      <button id="btn-abrir-cadastro" onclick="abrirModalDespesa()">
+          Nova Despesa ➕
+      </button>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="filtrarDespesas('todos', this)">Todas</button>
+        <button class="tab-btn" onclick="filtrarDespesas('pendente', this)">Pendentes</button>
+        <button class="tab-btn" onclick="filtrarDespesas('pago', this)">Pagas</button>
+        <button class="tab-btn" onclick="filtrarDespesas('atrasado', this)">Atrasadas</button>
+      </div>
+
+    </header>
+
+    <ul id="listaDespesas"></ul>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div id="modalDespesa" class="modal-geral">
+  <div class="modal-content">
+    <span class="close-modal" onclick="fecharModalDespesa()">×</span>
+
+    <h3 id="tituloModal">Cadastrar Conta</h3>
+
+    <div class="form-grid">
+
+      <input type="text" id="nomeDespesa" placeholder="Nome da conta">
+
+      <div class="linha-dupla">
+        <input type="number" id="valorDespesa" placeholder="Valor">
+        <input type="date" id="dataVencimento">
+      </div>
+
+      <select id="statusDespesa">
+        <option value="pendente">Pendente</option>
+        <option value="pago">Pago</option>
+      </select>
+
+      <label class="recorrente-label">
+        <input type="checkbox" id="recorrenteDespesa">
+        Recorrente mensal
+      </label>
+
+      <button class="btn-acao-principal" onclick="salvarDespesa()">
+        Salvar
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<script src="despesas.js"></script>
+</body>
+</html>

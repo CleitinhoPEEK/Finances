@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Economias</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="pagina-economias">
+
+    <a href="index.html" title="Voltar para o Início" style="
+        position: fixed; top: 20px; left: 20px; z-index: 1000;
+        width: 50px; height: 50px; background: var(--primary); 
+        border-radius: 50%; display: flex; align-items: center; 
+        justify-content: center; color: white; text-decoration: none; 
+        font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: transform 0.2s;" 
+        onmouseover="this.style.transform='scale(1.1)'" 
+        onmouseout="this.style.transform='scale(1)'">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <div class="app-container">
+        
+
+        <main class="main-content">
+            
+            <h1 style="margin-bottom: 20px;">Gerenciador Financeiro</h1>
+
+            <div class="tabs-eco-container">
+                <button class="tab-eco active" onclick="mudarAbaEconomia('carteira')">
+                    <i class="fa-solid fa-wallet"></i> Carteira
+                </button>
+                <button class="tab-eco" onclick="mudarAbaEconomia('poupanca')">
+                    <i class="fa-solid fa-piggy-bank"></i> Poupança
+                </button>
+            </div>
+
+            <div id="aba-carteira">
+                <div class="painel-economias">
+                    <div class="saldo-grande">
+                        <small>Saldo Disponível (Carteira)</small>
+                        <h2 id="saldo-tela-cheia">R$ 0,00</h2>
+                    </div>
+
+                    <div class="controles-economias">
+                        <div class="input-grupo">
+                            <input type="number" id="valor-operacao" placeholder="R$ 0,00">
+                            <input type="text" id="desc-operacao" placeholder="Descrição (Ex: Viagem)">
+                        </div>
+                        <div class="botoes-acao">
+                            <button onclick="realizarOperacao('depositar')" class="btn-depositar">
+                                <i class="fa-solid fa-arrow-down"></i> Entrou
+                            </button>
+                            <button onclick="realizarOperacao('sacar')" class="btn-sacar">
+                                <i class="fa-solid fa-arrow-up"></i> Saiu
+                            </button>
+
+
+                            <button onclick="abrirModalTransferencia()" class="btn-transferir" style="background: var(--warning); color: #333; margin-top: 10px; width: 100%; border-radius: 10px; padding: 12px; font-weight: bold; border: none; cursor: pointer;">
+    <i class="fa-solid fa-exchange-alt"></i> Transferir para Poupança
+</button>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">Extrato da Carteira</h3>
+                <div class="lista-extrato" id="lista-extrato">
+                    </div>
+            </div>
+
+            <div id="aba-poupanca" style="display: none;">
+                <div class="painel-economias" style="border-color: #3498db;">
+                    <div class="saldo-grande">
+                        <small>Total Investido (Poupança)</small>
+                        <h2 id="saldo-poupanca" style="color: #3498db;">R$ 0,00</h2>
+                    </div>
+
+                    <div class="controles-economias">
+                        <div class="input-grupo">
+                            <input type="number" id="valor-poupanca" placeholder="R$ 0,00">
+                            <input type="text" id="desc-poupanca" placeholder="Descrição (Ex: Guardar para Carro)">
+                        </div>
+                        <div class="botoes-acao">
+                            <button onclick="operarPoupanca('depositar')" class="btn-depositar" style="background: #3498db;">
+                                <i class="fa-solid fa-piggy-bank"></i> Guardar
+                            </button>
+                            <button onclick="operarPoupanca('sacar')" class="btn-sacar" style="background: #95a5a6;">
+                                <i class="fa-solid fa-hand-holding-dollar"></i> Resgatar
+                            </button>
+
+                            <button onclick="abrirModalResgate()" class="btn-resgatar-total" style="background: #9b59b6; color: white; margin-top: 10px; width: 100%; border-radius: 10px; padding: 12px; font-weight: bold; border: none; cursor: pointer;">
+    <i class="fa-solid fa-reply"></i> Enviar para Carteira
+</button>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 15px;">Histórico da Poupança</h3>
+                <div class="lista-extrato" id="extrato-poupanca">
+                    </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
