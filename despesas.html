@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -10,79 +10,102 @@
 </head>
 <body>
 
-<div class="app-container">
-  
-  <div id="overlay-mobile"></div>
-  <button id="toggle-sidebar">☰</button>
+<div class="app-container has-floating-back sidebar-closed" id="app-wrapper">
+  <div id="overlay-mobile" onclick="toggleSidebar()"></div>
+  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
+  <button class="btn-voltar-flutuante" onclick="voltarComSidebarFechada('index.html')" aria-label="Voltar para o inicio">
+    <i class="fa-solid fa-arrow-left"></i>
+  </button>
 
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><h2></h2></div>
+
     <div class="botoes-financeiros">
-        <button onclick="window.location.href='index.html'" class="btn-card">
-            <i class="fa-solid fa-house"></i>
-            <span>Início</span>
-        </button>
+      <button onclick="voltarComSidebarFechada('index.html')" class="btn-card btn-voltar-sidebar">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Voltar</span>
+      </button>
 
-        <button onclick="window.location.href='economias.html'" class="btn-card btn-economias">
-            <i class="fa-solid fa-piggy-bank"></i>
-            <span>Economias</span>
-        </button>
+      <button onclick="window.location.href='economias.html'" class="btn-card btn-economias">
+        <i class="fa-solid fa-piggy-bank"></i>
+        <span>Economias</span>
+      </button>
+    </div>
+
+    <nav id="menu-meses" class="menu-meses-grid"></nav>
+
+    <div class="backup-area">
+      <button id="btn-tema" class="btn-tema-toggle" onclick="alternarTema()">
+        Mudar Tema
+      </button>
+
+      <button class="btn-backup btn-backup-export" onclick="exportarDados()">
+        <i class="fa-solid fa-file-export"></i>
+        <span>Exportar backup</span>
+      </button>
+      <button class="btn-backup btn-backup-import" onclick="document.getElementById('input-import').click()">
+        <i class="fa-solid fa-file-import"></i>
+        <span>Importar backup</span>
+      </button>
+      <input type="file" id="input-import" style="display:none" onchange="importarDados(event)" accept=".json">
+
+      <hr class="backup-divider">
+
+      <button class="btn-reset" onclick="resetarSistema()">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Zerar tudo</span>
+      </button>
     </div>
   </aside>
 
   <main class="main-content">
-    <header>
-
-      <h1>Despesas Fixas & Contas</h1>
-
-      <div class="controle-mes">
-        <button onclick="mudarMes(-1)">⬅</button>
-        <strong id="mesAtualLabel"></strong>
-        <button onclick="mudarMes(1)">➡</button>
+    <header class="cabecalho-despesas">
+      <div class="titulo-despesas-wrap">
+        <h1 class="titulo-despesas">Despesas Fixas e Contas</h1>
+        <p class="subtitulo-despesas">Acompanhe pendências, pagamentos e o total do período em um painel simples.</p>
       </div>
 
-      <div class="dashboard">
+      <div class="dashboard dashboard-despesas" id="placar-despesas">
         <div class="card card-pagar">
-            <h3>🔴 Total a Pagar</h3>
-            <p id="totalPagar"></p>
+          <h3>Total a Pagar</h3>
+          <p id="totalPagar">R$ 0,00</p>
         </div>
 
         <div class="card card-pago">
-            <h3>🟢 Total Pago</h3>
-            <p id="totalPago"></p>
+          <h3>Total Pago</h3>
+          <p id="totalPago">R$ 0,00</p>
         </div>
 
         <div class="card card-geral">
-            <h3>💰 Total Geral</h3>
-            <p id="totalGeral"></p>
+          <h3>Total Geral</h3>
+          <p id="totalGeral">R$ 0,00</p>
         </div>
       </div>
 
-      <button id="btn-abrir-cadastro" onclick="abrirModalDespesa()">
-          Nova Despesa ➕
+      <button id="btn-abrir-cadastro" onclick="toggleFormDespesa()">
+        <span class="btn-text">Nova Despesa</span>
+        <span class="btn-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
       </button>
 
-      <div class="tabs">
+      <div class="tabs tabs-despesas">
         <button class="tab-btn active" onclick="filtrarDespesas('todos', this)">Todas</button>
         <button class="tab-btn" onclick="filtrarDespesas('pendente', this)">Pendentes</button>
         <button class="tab-btn" onclick="filtrarDespesas('pago', this)">Pagas</button>
         <button class="tab-btn" onclick="filtrarDespesas('atrasado', this)">Atrasadas</button>
       </div>
-
     </header>
 
     <ul id="listaDespesas"></ul>
   </main>
 </div>
 
-<!-- MODAL -->
 <div id="modalDespesa" class="modal-geral">
   <div class="modal-content">
-    <span class="close-modal" onclick="fecharModalDespesa()">×</span>
+    <span class="close-modal" onclick="toggleFormDespesa()">&times;</span>
 
     <h3 id="tituloModal">Cadastrar Conta</h3>
 
     <div class="form-grid">
-
       <input type="text" id="nomeDespesa" placeholder="Nome da conta">
 
       <div class="linha-dupla">
@@ -103,11 +126,11 @@
       <button class="btn-acao-principal" onclick="salvarDespesa()">
         Salvar
       </button>
-
     </div>
   </div>
 </div>
 
+<script src="common.js"></script>
 <script src="despesas.js"></script>
 </body>
 </html>

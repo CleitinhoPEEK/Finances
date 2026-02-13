@@ -5,28 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas Economias</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body class="pagina-economias">
+    <div class="app-container has-floating-back sidebar-closed" id="app-wrapper">
+        <div id="overlay-mobile" onclick="toggleSidebar()"></div>
+        <button id="toggle-sidebar" onclick="toggleSidebar()">&#9776;</button>
+        <button class="btn-voltar-flutuante" onclick="voltarComSidebarFechada('index.html')" aria-label="Voltar para o inicio">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
 
-    <a href="index.html" title="Voltar para o Início" style="
-        position: fixed; top: 20px; left: 20px; z-index: 1000;
-        width: 50px; height: 50px; background: var(--primary); 
-        border-radius: 50%; display: flex; align-items: center; 
-        justify-content: center; color: white; text-decoration: none; 
-        font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        transition: transform 0.2s;" 
-        onmouseover="this.style.transform='scale(1.1)'" 
-        onmouseout="this.style.transform='scale(1)'">
-        <i class="fa-solid fa-arrow-left"></i>
-    </a>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header"><h2></h2></div>
 
-    <div class="app-container">
-        
+            <div class="botoes-financeiros">
+                <button class="btn-card btn-voltar-sidebar" onclick="voltarComSidebarFechada('index.html')">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Voltar</span>
+                </button>
+
+                <button class="btn-card btn-despesas" onclick="window.location.href='despesas.html'">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <span>Despesas</span>
+                </button>
+            </div>
+
+            <div class="backup-area">
+                <button id="btn-tema" class="btn-tema-toggle" onclick="alternarTema()">
+                    Mudar Tema
+                </button>
+
+                <button class="btn-backup btn-backup-export" onclick="exportarDados()">
+                    <i class="fa-solid fa-file-export"></i>
+                    <span>Exportar backup</span>
+                </button>
+                <button class="btn-backup btn-backup-import" onclick="document.getElementById('input-import').click()">
+                    <i class="fa-solid fa-file-import"></i>
+                    <span>Importar backup</span>
+                </button>
+                <input type="file" id="input-import" style="display:none" onchange="importarDados(event)" accept=".json">
+
+                <hr class="backup-divider">
+
+                <button class="btn-reset" onclick="resetarSistema()">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>Zerar tudo</span>
+                </button>
+            </div>
+        </aside>
 
         <main class="main-content">
-            
-            <h1 style="margin-bottom: 20px;">Gerenciador Financeiro</h1>
+            <h1 class="titulo-economias">Gerenciador Financeiro</h1>
 
             <div class="tabs-eco-container">
                 <button class="tab-eco active" onclick="mudarAbaEconomia('carteira')">
@@ -40,14 +70,14 @@
             <div id="aba-carteira">
                 <div class="painel-economias">
                     <div class="saldo-grande">
-                        <small>Saldo Disponível (Carteira)</small>
+                        <small>Saldo disponivel (carteira)</small>
                         <h2 id="saldo-tela-cheia">R$ 0,00</h2>
                     </div>
 
                     <div class="controles-economias">
                         <div class="input-grupo">
                             <input type="number" id="valor-operacao" placeholder="R$ 0,00">
-                            <input type="text" id="desc-operacao" placeholder="Descrição (Ex: Viagem)">
+                            <input type="text" id="desc-operacao" placeholder="Descricao (Ex: Viagem)">
                         </div>
                         <div class="botoes-acao">
                             <button onclick="realizarOperacao('depositar')" class="btn-depositar">
@@ -57,59 +87,51 @@
                                 <i class="fa-solid fa-arrow-up"></i> Saiu
                             </button>
 
-
-                            <button onclick="abrirModalTransferencia()" class="btn-transferir" style="background: var(--warning); color: #333; margin-top: 10px; width: 100%; border-radius: 10px; padding: 12px; font-weight: bold; border: none; cursor: pointer;">
-    <i class="fa-solid fa-exchange-alt"></i> Transferir para Poupança
-</button>
-
-
-
+                            <button onclick="abrirModalTransferencia()" class="btn-transferir">
+                                <i class="fa-solid fa-exchange-alt"></i> Transferir para poupança
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <h3 style="margin-top: 30px; margin-bottom: 15px;">Extrato da Carteira</h3>
-                <div class="lista-extrato" id="lista-extrato">
-                    </div>
+                <h3 class="titulo-extrato">Extrato da carteira</h3>
+                <div class="lista-extrato" id="lista-extrato"></div>
             </div>
 
             <div id="aba-poupanca" style="display: none;">
-                <div class="painel-economias" style="border-color: #3498db;">
+                <div class="painel-economias painel-poupanca">
                     <div class="saldo-grande">
-                        <small>Total Investido (Poupança)</small>
-                        <h2 id="saldo-poupanca" style="color: #3498db;">R$ 0,00</h2>
+                        <small>Total investido (poupança)</small>
+                        <h2 id="saldo-poupanca">R$ 0,00</h2>
                     </div>
 
                     <div class="controles-economias">
                         <div class="input-grupo">
                             <input type="number" id="valor-poupanca" placeholder="R$ 0,00">
-                            <input type="text" id="desc-poupanca" placeholder="Descrição (Ex: Guardar para Carro)">
+                            <input type="text" id="desc-poupanca" placeholder="Descricao (Ex: Guardar para carro)">
                         </div>
                         <div class="botoes-acao">
-                            <button onclick="operarPoupanca('depositar')" class="btn-depositar" style="background: #3498db;">
+                            <button onclick="operarPoupanca('depositar')" class="btn-depositar btn-poupanca-depositar">
                                 <i class="fa-solid fa-piggy-bank"></i> Guardar
                             </button>
-                            <button onclick="operarPoupanca('sacar')" class="btn-sacar" style="background: #95a5a6;">
+                            <button onclick="operarPoupanca('sacar')" class="btn-sacar btn-poupanca-resgatar">
                                 <i class="fa-solid fa-hand-holding-dollar"></i> Resgatar
                             </button>
 
-                            <button onclick="abrirModalResgate()" class="btn-resgatar-total" style="background: #9b59b6; color: white; margin-top: 10px; width: 100%; border-radius: 10px; padding: 12px; font-weight: bold; border: none; cursor: pointer;">
-    <i class="fa-solid fa-reply"></i> Enviar para Carteira
-</button>
-
-
+                            <button onclick="abrirModalResgate()" class="btn-resgatar-total">
+                                <i class="fa-solid fa-reply"></i> Enviar para carteira
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <h3 style="margin-top: 30px; margin-bottom: 15px;">Histórico da Poupança</h3>
-                <div class="lista-extrato" id="extrato-poupanca">
-                    </div>
+                <h3 class="titulo-extrato">Histórico da poupança</h3>
+                <div class="lista-extrato" id="extrato-poupanca"></div>
             </div>
-
         </main>
     </div>
 
+    <script src="common.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
