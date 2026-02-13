@@ -297,12 +297,20 @@ body.theme-switching::after {
         left: 0;
         top: 0;
         box-shadow: 5px 0 15px rgba(0,0,0,0.5); /* Sombra lateral */
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+
+    .sidebar .backup-area {
+        margin-top: auto !important;
+        padding-top: 12px;
     }
     
     /* Quando fechada no mobile, sai da tela pela esquerda */
     .sidebar-closed .sidebar {
-        transform: translateX(-100%); /* Move para fora */
-        margin-left: 0; /* Remove a margem negativa do desktop */
+        transform: translateX(calc(-100% - 4px)); /* Move totalmente para fora */
+        margin-left: 0 !important; /* Ignora regra de desktop */
+        box-shadow: none;
+        border-right-color: transparent;
     }
 }
 .menu-meses-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
@@ -1303,6 +1311,25 @@ body.light-mode .titulo-despesas-wrap {
     }
 }
 
+@media (max-width: 768px) {
+    .titulo-despesas-wrap,
+    .dashboard-despesas .card,
+    .tabs-despesas .tab-btn,
+    #listaDespesas .lista-item {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        -webkit-filter: none !important;
+    }
+
+    .titulo-despesas-wrap,
+    .dashboard-despesas .card {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
 @keyframes pulse-glow {
     0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
     70% { box-shadow: 0 0 0 15px rgba(52, 152, 219, 0); }
@@ -1680,9 +1707,11 @@ input:focus, select:focus, textarea:focus {
     letter-spacing: 0.5px;
 }
 
-/* --- REGRA QUE FALTAVA PARA O DESKTOP --- */
-.sidebar-closed .sidebar {
-    margin-left: -260px; /* Esconde a sidebar puxando ela para fora da tela */
+/* --- FECHAMENTO DA SIDEBAR APENAS NO DESKTOP --- */
+@media (min-width: 769px) {
+    .sidebar-closed .sidebar {
+        margin-left: -260px;
+    }
 }
 
 
@@ -1843,6 +1872,170 @@ input:focus, select:focus, textarea:focus {
 .btn-check { background: var(--success); }
 .btn-check.pago { background: var(--warning); color: var(--warning-contrast); }
 .btn-excluir { background: var(--danger); color: #fff; }
+
+/* ==============================
+   Aba Despesas no estilo do Index
+   com enfase visual da secao
+   ============================== */
+body.pagina-despesas .cabecalho-despesas {
+  max-width: none;
+  margin: 0 0 24px;
+}
+
+body.pagina-despesas .titulo-despesas-wrap {
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  animation: none;
+}
+
+body.pagina-despesas .titulo-despesas-wrap::before {
+  content: none;
+}
+
+body.pagina-despesas .titulo-despesas {
+  font-size: 2.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 10px;
+  text-align: center;
+  background: linear-gradient(90deg, #ffd0d0, #ff8f87);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.22));
+}
+
+body.light-mode.pagina-despesas .titulo-despesas {
+  background: linear-gradient(90deg, #9f2222, #d63031);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.pagina-despesas .titulo-despesas::after {
+  width: 92px;
+  height: 3px;
+  margin: 8px auto 0;
+  background: linear-gradient(90deg, #e74c3c, #ff8f87);
+}
+
+body.pagina-despesas .subtitulo-despesas {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 820px;
+  opacity: 0;
+  max-height: 64px;
+  overflow: hidden;
+  transform: translateY(8px);
+  animation: subtitulo-despesas-entrada 1300ms var(--motion-ease) 180ms forwards;
+  transition: opacity 320ms ease, max-height 320ms ease, margin 320ms ease, transform 320ms ease;
+}
+
+body.pagina-despesas .subtitulo-despesas.oculto {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  transform: translateY(-4px);
+  animation: none;
+  pointer-events: none;
+}
+
+@keyframes subtitulo-despesas-entrada {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.pagina-despesas .dashboard-despesas {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin: 0 0 28px;
+}
+
+body.pagina-despesas .dashboard-despesas .card {
+  min-height: auto;
+  padding: 20px;
+  text-align: center;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  animation: none;
+}
+
+body.pagina-despesas .dashboard-despesas .card h3 {
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+body.pagina-despesas .dashboard-despesas .card h3::before {
+  content: none;
+}
+
+body.pagina-despesas .dashboard-despesas .card p {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  text-shadow: var(--card-value-shadow);
+}
+
+body.pagina-despesas .dashboard-despesas .card-pagar {
+  border-bottom: 2px solid var(--danger);
+  box-shadow: 0 10px 30px -10px rgba(231, 76, 60, 0.30);
+}
+
+body.pagina-despesas .dashboard-despesas .card-pago {
+  border-bottom: 2px solid var(--success);
+  box-shadow: 0 10px 30px -10px rgba(46, 204, 113, 0.30);
+}
+
+body.pagina-despesas .dashboard-despesas .card-geral {
+  border-bottom: 2px solid #ff9f43;
+  box-shadow: 0 10px 30px -10px rgba(255, 159, 67, 0.30);
+}
+
+body.pagina-despesas .tabs-despesas {
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+body.pagina-despesas .tabs-despesas .tab-btn:hover {
+  border-color: #e74c3c;
+  color: #ff8f87;
+}
+
+body.pagina-despesas .tabs-despesas .tab-btn.active {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.30);
+}
+
+body.pagina-despesas #btn-abrir-cadastro {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  border-color: rgba(255, 143, 135, 0.58);
+  box-shadow: 0 8px 18px rgba(231, 76, 60, 0.30);
+}
+
+body.pagina-despesas #btn-abrir-cadastro:hover {
+  background: linear-gradient(135deg, #ef5a4f, #d73b2f);
+}
 
 
 

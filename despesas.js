@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarTema();
     aplicarEstadoInicialSidebar();
     configurarGestosSidebarMobile();
+    iniciarAutoOcultarSubtitulo();
     gerarMenuMeses();
     gerarRecorrentesAutomatico();
     atualizarLista();
@@ -85,6 +86,15 @@ function aplicarEstadoInicialSidebar() {
 function voltarComSidebarFechada(destino = 'index.html') {
     localStorage.setItem(STORAGE_SIDEBAR_RETORNO_FECHADA, '1');
     window.location.href = destino;
+}
+
+function iniciarAutoOcultarSubtitulo() {
+    const subtitulo = document.querySelector('.subtitulo-despesas');
+    if (!subtitulo) return;
+
+    setTimeout(() => {
+        subtitulo.classList.add('oculto');
+    }, 8000);
 }
 
 function configurarGestosSidebarMobile() {
