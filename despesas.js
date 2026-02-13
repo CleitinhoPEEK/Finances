@@ -7,6 +7,7 @@ const STORAGE_CLIENTES = 'cobrancas_2026';
 const STORAGE_POUPANCA = 'poupanca_saldo';
 const STORAGE_HIST_POUPANCA = 'poupanca_historico';
 const STORAGE_SIDEBAR_RETORNO_FECHADA = 'sidebar_retorno_fechada';
+const STORAGE_PULAR_SPLASH_ENTRADA = 'pular_splash_entrada_once';
 const DURACAO_TRANSICAO_TEMA = 420;
 
 const Common = window.FinCommon;
@@ -23,7 +24,8 @@ const {
     getHojeLocal,
     escapeHtml,
     limitarHistorico,
-    baixarJson
+    baixarJson,
+    iniciarAnimacaoEntradaPagina
 } = Common;
 
 let listaDespesas = JSON.parse(localStorage.getItem(STORAGE_DESPESAS)) || [];
@@ -36,6 +38,7 @@ let filtroAtual = 'todos';
 let editandoId = null;
 let registrosMesCache = [];
 let sequenciaIdDespesa = 0;
+let notificacaoDespesaSinoJaClicado = false;
 
 let temaTransicaoTimer = null;
 
@@ -53,10 +56,11 @@ const getStatusEfetivoDespesa = (item, dataItem, hoje) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     carregarTema();
+    iniciarAnimacaoEntradaPagina();
     aplicarEstadoInicialSidebar();
     configurarGestosSidebarMobile();
+    configurarPainelNotificacoesDespesas();
     iniciarAutoOcultarSubtitulo();
-    gerarMenuMeses();
     gerarRecorrentesAutomatico();
     atualizarLista();
 });
@@ -67,10 +71,63 @@ function toggleSidebar() {
 }
 
 function fecharSidebarMobile() {
-    if (window.innerWidth <= 768) {
-        const appWrapper = getEl('app-wrapper');
-        if (appWrapper) appWrapper.classList.add('sidebar-closed');
+    const appWrapper = getEl('app-wrapper');
+    if (appWrapper) appWrapper.classList.add('sidebar-closed');
+}
+
+function toggleMenuAno() {
+    const menu = getEl('menu-meses');
+    if (!menu) return;
+
+    const colapsadoAtual = menu.dataset.colapsado === '1';
+    menu.dataset.colapsado = colapsadoAtual ? '0' : '1';
+    gerarMenuMeses();
+}
+
+function abrirResumoAno(ano = dataAtual.getFullYear()) {
+    window.location.href = `resumo-ano.html?ano=${encodeURIComponent(String(ano))}`;
+}
+
+function selecionarMesDespesa(mes) {
+    if (!Number.isInteger(mes) || mes < 0 || mes > 11) return;
+    dataAtual = new Date(dataAtual.getFullYear(), mes, 1);
+
+    const menu = getEl('menu-meses');
+    if (menu) menu.dataset.colapsado = '1';
+
+    gerarRecorrentesAutomatico();
+    atualizarLista();
+    fecharSidebarMobile();
+}
+
+function gerarMenuMeses() {
+    const menu = getEl('menu-meses');
+    if (!menu) return;
+
+    if (menu.dataset.colapsado !== '0' && menu.dataset.colapsado !== '1') {
+        menu.dataset.colapsado = '1';
     }
+
+    const colapsado = menu.dataset.colapsado === '1';
+    const mesAtual = dataAtual.getMonth();
+    const mesSelecionadoCompleto = nomesMeses[mesAtual] || '';
+    const mesSelecionadoInicial = mesSelecionadoCompleto.slice(0, 3);
+
+    menu.innerHTML = `
+        <div class="menu-ano-header menu-ano-header--single">
+            <button type="button" class="menu-ano-toggle ${colapsado ? 'collapsed' : 'expanded'}" onclick="toggleMenuAno()" aria-label="${colapsado ? 'Expandir meses' : 'Recolher meses'} - Mes atual: ${escapeHtml(mesSelecionadoCompleto)}">
+                <span class="menu-ano-toggle-label">${escapeHtml(mesSelecionadoInicial)}</span>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="menu-meses-lista ${colapsado ? 'is-collapsed' : ''}">
+            ${nomesMeses.map((mesNome, indice) => `
+                <button class="${indice === mesAtual ? 'active' : ''}" onclick="selecionarMesDespesa(${indice})">
+                    ${mesNome}
+                </button>
+            `).join('')}
+        </div>
+    `;
 }
 
 function aplicarEstadoInicialSidebar() {
@@ -85,6 +142,7 @@ function aplicarEstadoInicialSidebar() {
 
 function voltarComSidebarFechada(destino = 'index.html') {
     localStorage.setItem(STORAGE_SIDEBAR_RETORNO_FECHADA, '1');
+    localStorage.setItem(STORAGE_PULAR_SPLASH_ENTRADA, '1');
     window.location.href = destino;
 }
 
@@ -95,6 +153,140 @@ function iniciarAutoOcultarSubtitulo() {
     setTimeout(() => {
         subtitulo.classList.add('oculto');
     }, 8000);
+}
+
+function alternarPainelNotificacoesDespesas(forcarAberto = null) {
+    const container = getEl('notificacoes-despesas');
+    const botao = getEl('btn-notificacoes-despesas');
+    const painel = getEl('notificacoes-despesas-painel');
+    if (!container || !botao || !painel) return;
+
+    const abrir = typeof forcarAberto === 'boolean' ? forcarAberto : painel.hidden;
+    painel.hidden = !abrir;
+    container.classList.toggle('aberto', abrir);
+    botao.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+}
+
+function configurarPainelNotificacoesDespesas() {
+    const container = getEl('notificacoes-despesas');
+    const botao = getEl('btn-notificacoes-despesas');
+    const painel = getEl('notificacoes-despesas-painel');
+    if (!container || !botao || !painel) return;
+
+    botao.addEventListener('click', event => {
+        event.stopPropagation();
+        notificacaoDespesaSinoJaClicado = true;
+        botao.classList.remove('balancando');
+        alternarPainelNotificacoesDespesas();
+    });
+
+    painel.addEventListener('click', event => {
+        event.stopPropagation();
+    });
+
+    document.addEventListener('click', event => {
+        if (!container.contains(event.target)) alternarPainelNotificacoesDespesas(false);
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') alternarPainelNotificacoesDespesas(false);
+    });
+}
+
+function obterNotificacoesDespesas() {
+    const hoje = getHojeLocal();
+    const amanha = new Date(hoje);
+    amanha.setDate(amanha.getDate() + 1);
+    const mesAtual = dataAtual.getMonth();
+    const anoAtual = dataAtual.getFullYear();
+
+    const notificacoes = {
+        atrasadas: [],
+        hoje: [],
+        amanha: []
+    };
+
+    for (const item of listaDespesas) {
+        if (item.status === 'pago') continue;
+
+        const dataItem = getDataLocal(item.data);
+        dataItem.setHours(0, 0, 0, 0);
+        if (!isMesmoMesAno(dataItem, mesAtual, anoAtual)) continue;
+
+        const registro = { item, dataItem };
+        if (dataItem < hoje) notificacoes.atrasadas.push(registro);
+        else if (dataItem.getTime() === hoje.getTime()) notificacoes.hoje.push(registro);
+        else if (dataItem.getTime() === amanha.getTime()) notificacoes.amanha.push(registro);
+    }
+
+    const ordenar = (a, b) => {
+        const ordemData = a.dataItem - b.dataItem;
+        if (ordemData !== 0) return ordemData;
+        return String(a.item.nome || '').localeCompare(String(b.item.nome || ''), 'pt-BR', { sensitivity: 'base' });
+    };
+
+    notificacoes.atrasadas.sort(ordenar);
+    notificacoes.hoje.sort(ordenar);
+    notificacoes.amanha.sort(ordenar);
+
+    notificacoes.total = notificacoes.atrasadas.length + notificacoes.hoje.length + notificacoes.amanha.length;
+    return notificacoes;
+}
+
+function atualizarNotificacoesDespesas() {
+    const container = getEl('notificacoes-despesas');
+    const botao = getEl('btn-notificacoes-despesas');
+    const painel = getEl('notificacoes-despesas-painel');
+    const lista = getEl('notificacoes-despesas-lista');
+    const badge = getEl('notificacoes-despesas-badge');
+    if (!container || !botao || !painel || !lista || !badge) return;
+
+    const notificacoes = obterNotificacoesDespesas();
+    badge.textContent = String(notificacoes.total);
+    botao.setAttribute('aria-label', `Alertas de despesas: ${notificacoes.total}`);
+
+    if (!notificacoes.total) {
+        alternarPainelNotificacoesDespesas(false);
+        notificacaoDespesaSinoJaClicado = false;
+        botao.classList.remove('balancando');
+        container.hidden = true;
+        lista.innerHTML = '';
+        return;
+    }
+
+    container.hidden = false;
+    if (!notificacaoDespesaSinoJaClicado) botao.classList.add('balancando');
+
+    const fragment = document.createDocumentFragment();
+    const adicionarSecao = (titulo, itens, classeTipo, textoData) => {
+        if (!itens.length) return;
+
+        const cabecalho = document.createElement('li');
+        cabecalho.className = `notificacoes-secao ${classeTipo}`;
+        cabecalho.innerHTML = `<span class="notificacoes-secao-titulo">${escapeHtml(titulo)}</span>`;
+        fragment.appendChild(cabecalho);
+
+        for (const registro of itens) {
+            const { item } = registro;
+            const li = document.createElement('li');
+            li.className = `notificacoes-item ${classeTipo}`;
+            li.innerHTML = `
+                <div class="notificacoes-item-info">
+                    <span class="notificacoes-item-nome">${escapeHtml(item.nome)}</span>
+                    <span class="notificacoes-item-data">${escapeHtml(textoData)} (${escapeHtml(formatarDataBr(item.data))})</span>
+                </div>
+                <span class="notificacoes-item-valor">${formatarMoeda(item.valor)}</span>
+            `;
+            fragment.appendChild(li);
+        }
+    };
+
+    adicionarSecao(`Vencidas (${notificacoes.atrasadas.length})`, notificacoes.atrasadas, 'notificacao-atrasada', 'Venceu em');
+    adicionarSecao(`Vencem hoje (${notificacoes.hoje.length})`, notificacoes.hoje, 'notificacao-hoje', 'Vence hoje');
+    adicionarSecao(`Vencem amanha (${notificacoes.amanha.length})`, notificacoes.amanha, 'notificacao-amanha', 'Vence amanha');
+
+    lista.innerHTML = '';
+    lista.appendChild(fragment);
 }
 
 function configurarGestosSidebarMobile() {
@@ -165,44 +357,6 @@ function configurarGestosSidebarMobile() {
     document.addEventListener('touchstart', aoToqueIniciar, { passive: true });
     document.addEventListener('touchend', aoToqueFinalizar, { passive: true });
     document.addEventListener('touchcancel', resetarGestos, { passive: true });
-}
-
-function gerarMenuMeses() {
-    const menu = getEl('menu-meses');
-    if (!menu) return;
-
-    menu.innerHTML = nomesMeses.map((nomeMes, indice) => `
-        <button class="${indice === dataAtual.getMonth() ? 'active' : ''}" onclick="selecionarMes(${indice})">
-            ${nomeMes}
-        </button>
-    `).join('');
-}
-
-function selecionarMes(indiceMes) {
-    dataAtual.setMonth(indiceMes);
-    gerarMenuMeses();
-    gerarRecorrentesAutomatico();
-    atualizarLista();
-    fecharSidebarMobile();
-}
-
-// Compatibilidade com chamadas antigas.
-function atualizarLabelMes() {
-    // A tela atual nao usa esse label, mas a funcao foi mantida por compatibilidade.
-}
-
-// Compatibilidade com chamadas antigas.
-function mudarMes(valor) {
-    dataAtual.setMonth(dataAtual.getMonth() + valor);
-    gerarMenuMeses();
-    gerarRecorrentesAutomatico();
-    atualizarLista();
-}
-
-// Compatibilidade com chamadas antigas.
-function abrirModalDespesa() {
-    const modalDespesaEl = getEl('modalDespesa');
-    if (modalDespesaEl) modalDespesaEl.classList.add('active');
 }
 
 function carregarTema() {
@@ -295,6 +449,7 @@ function registrarTransacaoCarteira(tipo, valor, descricao) {
         tipo: tipo === 'entrada' ? 'depositar' : 'sacar',
         valor: valorNumerico,
         descricao,
+        timestamp: Date.now(),
         data: new Date().toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' })
     });
     limitarHistorico(historicoCarteira);
@@ -553,6 +708,8 @@ function atualizarLista() {
     if (totalGeralEl) totalGeralEl.innerText = formatarMoeda(totalPago + totalPagar);
 
     renderLista(registrosMes);
+    atualizarNotificacoesDespesas();
+    gerarMenuMeses();
 }
 
 function renderLista(registrosMes = registrosMesCache) {
@@ -655,11 +812,6 @@ function filtrarDespesas(tipo, btn) {
     document.querySelectorAll('.tab-btn').forEach(botao => botao.classList.remove('active'));
     if (btn) btn.classList.add('active');
     renderLista();
-}
-
-// Compatibilidade com chamadas antigas.
-function formatarData(data) {
-    return formatarDataBr(data);
 }
 
 function salvarStorage() {

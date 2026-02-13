@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -10,31 +10,50 @@
 </head>
 <body class="pagina-despesas">
 
+<section id="notificacoes-despesas" class="notificacoes-hoje notificacoes-despesas" aria-live="polite" hidden>
+  <button id="btn-notificacoes-despesas" class="notificacoes-trigger" type="button" aria-label="Abrir alertas de despesas" aria-expanded="false" aria-controls="notificacoes-despesas-painel">
+    <i class="fa-solid fa-bell" aria-hidden="true"></i>
+    <span id="notificacoes-despesas-badge" class="notificacoes-badge">0</span>
+  </button>
+  <div id="notificacoes-despesas-painel" class="notificacoes-painel" hidden>
+    <div class="notificacoes-header">
+      <i class="fa-solid fa-bell" aria-hidden="true"></i>
+      <strong>Alertas de despesas</strong>
+    </div>
+    <ul id="notificacoes-despesas-lista" class="notificacoes-lista"></ul>
+  </div>
+</section>
+
 <div class="app-container has-floating-back sidebar-closed" id="app-wrapper">
   <div id="overlay-mobile" onclick="toggleSidebar()"></div>
-  <button id="toggle-sidebar" onclick="toggleSidebar()">☰</button>
-  <button class="btn-voltar-flutuante" onclick="voltarComSidebarFechada('index.html')" aria-label="Voltar para o inicio">
+  <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Abrir menu">
+    <img src="logo2.png" alt="" loading="lazy" decoding="async">
+  </button>
+  <button class="btn-voltar-flutuante" onclick="voltarComSidebarFechada('index.html')" aria-label="Ir para inicio">
     <i class="fa-solid fa-arrow-left"></i>
   </button>
 
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header"><h2></h2></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="botoes-financeiros">
+      <button onclick="voltarComSidebarFechada('index.html')" class="btn-card btn-voltar-sidebar" aria-label="Ir para inicio">
+        <i class="fa-solid fa-house"></i>
+        <span>Inicio</span>
+      </button>
 
-    <div class="botoes-financeiros">
-      <button onclick="voltarComSidebarFechada('index.html')" class="btn-card btn-voltar-sidebar">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Voltar</span>
+      <button class="btn-card btn-resumo-ano-sidebar" onclick="window.location.href='resumo-ano.html?ano=2026'" aria-label="Abrir resumo anual 2026">
+        <i class="fa-solid fa-chart-column"></i>
+        <span>2026</span>
       </button>
 
       <button onclick="window.location.href='economias.html'" class="btn-card btn-economias">
         <i class="fa-solid fa-piggy-bank"></i>
         <span>Economias</span>
       </button>
-    </div>
+      </div>
 
-    <nav id="menu-meses" class="menu-meses-grid"></nav>
+      <nav id="menu-meses" class="menu-meses-grid"></nav>
 
-    <div class="backup-area">
+      <div class="backup-area">
       <button id="btn-tema" class="btn-tema-toggle" onclick="alternarTema()">
         Mudar Tema
       </button>
@@ -55,6 +74,7 @@
         <i class="fa-solid fa-triangle-exclamation"></i>
         <span>Zerar tudo</span>
       </button>
+
     </div>
   </aside>
 
@@ -62,7 +82,7 @@
     <header class="cabecalho-despesas">
       <div class="titulo-despesas-wrap">
         <h1 class="titulo-despesas">Despesas Fixas e Contas</h1>
-        <p class="subtitulo-despesas">Acompanhe pendências, pagamentos e o total do período em um painel simples.</p>
+        <p class="subtitulo-despesas">Acompanhe pendencias, pagamentos e o total do periodo em um painel simples.</p>
       </div>
 
       <div class="dashboard dashboard-despesas" id="placar-despesas">
@@ -128,6 +148,10 @@
       </button>
     </div>
   </div>
+</div>
+
+<div class="brand-logo brand-logo--watermark" aria-hidden="true">
+  <img src="logo2.png" alt="" loading="lazy" decoding="async">
 </div>
 
 <script src="common.js"></script>

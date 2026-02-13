@@ -11,27 +11,34 @@
 <body class="pagina-economias">
     <div class="app-container has-floating-back sidebar-closed" id="app-wrapper">
         <div id="overlay-mobile" onclick="toggleSidebar()"></div>
-        <button id="toggle-sidebar" onclick="toggleSidebar()">&#9776;</button>
-        <button class="btn-voltar-flutuante" onclick="voltarComSidebarFechada('index.html')" aria-label="Voltar para o inicio">
+        <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Abrir menu">
+            <img src="logo2.png" alt="" loading="lazy" decoding="async">
+        </button>
+        <button class="btn-voltar-flutuante" onclick="voltarComSidebarFechada('index.html')" aria-label="Ir para inicio">
             <i class="fa-solid fa-arrow-left"></i>
         </button>
 
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header"><h2></h2></div>
-
-            <div class="botoes-financeiros">
-                <button class="btn-card btn-voltar-sidebar" onclick="voltarComSidebarFechada('index.html')">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    <span>Voltar</span>
+            <aside class="sidebar" id="sidebar">
+                <div class="botoes-financeiros">
+                <button class="btn-card btn-voltar-sidebar" onclick="voltarComSidebarFechada('index.html')" aria-label="Ir para inicio">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Inicio</span>
                 </button>
 
-                <button class="btn-card btn-despesas" onclick="window.location.href='despesas.html'">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <span>Despesas</span>
+                <button class="btn-card btn-resumo-ano-sidebar" onclick="window.location.href='resumo-economias.html?ano=2026'" aria-label="Abrir resumo de economias 2026">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Resumo</span>
                 </button>
-            </div>
 
-            <div class="backup-area">
+                    <button class="btn-card btn-despesas" onclick="window.location.href='despesas.html'">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span>Despesas</span>
+                    </button>
+                </div>
+
+                <nav id="menu-meses" class="menu-meses-grid"></nav>
+
+                <div class="backup-area">
                 <button id="btn-tema" class="btn-tema-toggle" onclick="alternarTema()">
                     Mudar Tema
                 </button>
@@ -52,18 +59,20 @@
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <span>Zerar tudo</span>
                 </button>
+
             </div>
         </aside>
 
         <main class="main-content">
-            <h1 class="titulo-economias">Gerenciador Financeiro</h1>
+            <h1 class="titulo-economias">EXTRATO</h1>
+            <p class="subtitulo-economias">Acompanhe movimentacoes da carteira e poupanca em um painel simples.</p>
 
             <div class="tabs-eco-container">
                 <button class="tab-eco active" onclick="mudarAbaEconomia('carteira')">
                     <i class="fa-solid fa-wallet"></i> Carteira
                 </button>
                 <button class="tab-eco" onclick="mudarAbaEconomia('poupanca')">
-                    <i class="fa-solid fa-piggy-bank"></i> Poupança
+                    <i class="fa-solid fa-piggy-bank"></i> Poupanca
                 </button>
             </div>
 
@@ -129,6 +138,10 @@
                 <div class="lista-extrato" id="extrato-poupanca"></div>
             </div>
         </main>
+    </div>
+
+    <div class="brand-logo brand-logo--watermark" aria-hidden="true">
+        <img src="logo2.png" alt="" loading="lazy" decoding="async">
     </div>
 
     <script src="common.js"></script>

@@ -5,6 +5,10 @@
   --success: #2ecc71;
   --warning: #f1c40f;
   --danger: #e74c3c;
+  --highlight-value-main: #f7d774;
+  --highlight-value-positive: #65e3a6;
+  --highlight-value-negative: #ff8f86;
+  --highlight-value-warning: #ffd166;
   
   --bg-body: #121212;
   --bg-surface: #1e1e1e;
@@ -22,7 +26,7 @@
   --badge-bg: #333333;
   --badge-text: #ffffff;
   --card-border: rgba(255, 255, 255, 0.05);
-  --card-value-color: #ffffff;
+  --card-value-color: var(--highlight-value-main);
   --card-value-shadow: 0 2px 10px rgba(0,0,0,0.3);
   --warning-contrast: #2f2f2f;
   --btn-neutral: #34495e;
@@ -36,6 +40,7 @@
   --poupanca-accent-hover: #8e44ad;
   --motion-smooth: 260ms;
   --motion-theme: 380ms;
+  --motion-page-open: 860ms;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-cinema: cubic-bezier(0.16, 1, 0.3, 1);
   --theme-origin-x: 50vw;
@@ -67,97 +72,100 @@
   --placar-pagar-bg1: rgba(255, 255, 255, 0.03);
   --placar-pagar-bg2: rgba(255, 255, 255, 0.03);
   --placar-pagar-border: rgba(231, 76, 60, 0.34);
-  --placar-pagar-value: #f1f5f9;
+  --placar-pagar-value: var(--highlight-value-negative);
   --placar-pago-bg1: rgba(255, 255, 255, 0.03);
   --placar-pago-bg2: rgba(255, 255, 255, 0.03);
   --placar-pago-border: rgba(46, 204, 113, 0.32);
-  --placar-pago-value: #f1f5f9;
+  --placar-pago-value: var(--highlight-value-positive);
   --placar-geral-bg1: rgba(255, 255, 255, 0.03);
   --placar-geral-bg2: rgba(255, 255, 255, 0.03);
   --placar-geral-border: rgba(52, 152, 219, 0.36);
-  --placar-geral-value: #f1f5f9;
+  --placar-geral-value: var(--highlight-value-main);
 }
 
 /* --- TEMA CORPORATIVO (LIGHT MODE - CORRIGIDO) --- */
 body.light-mode {
-  --primary: #0984e3;
-  --primary-soft: #74b9ff;
-  --success: #00b894;
-  --warning: #fdcb6e;
-  --danger: #d63031;
+  --primary: #4f82dd;
+  --primary-soft: #7ea6ef;
+  --success: #356a58;
+  --warning: #9a6832;
+  --danger: #8f4343;
+  --highlight-value-main: #8a5f2b;
+  --highlight-value-positive: #2f5e4d;
+  --highlight-value-negative: #6e3636;
+  --highlight-value-warning: #8f6200;
   
-  --bg-body: #f4f7f6;      /* Fundo cinza gelo */
-  --bg-surface: #ffffff;   /* Branco puro */
-  --bg-card: #ffffff;
-  --bg-input: #ffffff;
-  --bg-sublista: #f8f9fa;  /* Fundo da lista expandida CLARO */
+  --bg-body: #6c7894;
+  --bg-surface: #f4f7fc;
+  --bg-card: rgba(250, 252, 255, 0.92);
+  --bg-input: #f7f9fd;
+  --bg-sublista: #edf2f9;
   
-  --text-main: #2c3e50;
-  --text-muted: #636e72;
-  --text-destaque: #2d3436; /* Texto dos itens ESCURO */
+  --text-main: #2f3d53;
+  --text-muted: #5e6b81;
+  --text-destaque: #1e2b3f;
   
-  --border-color: #dfe6e9;
+  --border-color: #c8d2e1;
   
-  --dark-sidebar: #2c3e50; /* Azul Corporativo */
-  --badge-bg: #dfe6e9;
-  --badge-text: #2d3436;
-  --card-border: rgba(44, 62, 80, 0.10);
-  --card-value-color: #2c3e50;
+  --dark-sidebar: #4f5d79;
+  --badge-bg: #e1e7f1;
+  --badge-text: #324058;
+  --card-border: rgba(83, 100, 129, 0.22);
+  --card-value-color: var(--highlight-value-main);
   --card-value-shadow: none;
   --warning-contrast: #4a3500;
-  --btn-neutral: #5d6d7e;
-  --sidebar-btn-bg: #f8f9fb;
-  --sidebar-btn-border: #cfd6dd;
-  --sidebar-btn-text: #2c3e50;
-  --sidebar-btn-hover-bg: #ffffff;
-  --poupanca-primary: #0984e3;
-  --poupanca-secondary: #7f8c8d;
-  --poupanca-accent: #8a63d2;
-  --poupanca-accent-hover: #744cbf;
+  --btn-neutral: #5c6f8a;
+  --sidebar-btn-bg: rgba(255, 255, 255, 0.10);
+  --sidebar-btn-border: rgba(225, 234, 246, 0.30);
+  --sidebar-btn-text: #edf3ff;
+  --sidebar-btn-hover-bg: rgba(255, 255, 255, 0.18);
+  --poupanca-primary: #4f82dd;
+  --poupanca-secondary: #7b8898;
+  --poupanca-accent: #8f67c7;
+  --poupanca-accent-hover: #7f59b2;
   --theme-flash-color: rgba(15, 23, 42, 0.18);
-  --backup-divider: rgba(44, 62, 80, 0.16);
-  --btn-export-bg: linear-gradient(135deg, rgba(0, 184, 148, 0.86), rgba(0, 153, 122, 0.76));
+  --backup-divider: rgba(36, 52, 73, 0.18);
+  --btn-export-bg: linear-gradient(135deg, rgba(42, 143, 100, 0.92), rgba(30, 114, 80, 0.86));
   --btn-export-text: #ffffff;
-  --btn-export-border: rgba(0, 184, 148, 0.78);
-  --btn-export-shadow: 0 8px 18px rgba(0, 184, 148, 0.28);
-  --btn-import-bg: linear-gradient(135deg, rgba(9, 132, 227, 0.86), rgba(0, 108, 203, 0.76));
+  --btn-export-border: rgba(42, 143, 100, 0.78);
+  --btn-export-shadow: 0 8px 18px rgba(31, 93, 67, 0.28);
+  --btn-import-bg: linear-gradient(135deg, rgba(79, 130, 221, 0.92), rgba(61, 108, 196, 0.86));
   --btn-import-text: #ffffff;
-  --btn-import-border: rgba(9, 132, 227, 0.78);
-  --btn-import-shadow: 0 8px 18px rgba(9, 132, 227, 0.28);
-  --btn-theme-bg: linear-gradient(135deg, #4aa3ff, #2f7fdb);
+  --btn-import-border: rgba(79, 130, 221, 0.80);
+  --btn-import-shadow: 0 8px 18px rgba(47, 77, 138, 0.30);
+  --btn-theme-bg: linear-gradient(135deg, #5f8fdc, #4a78ca);
   --btn-theme-text: #ffffff;
-  --btn-theme-border: rgba(9, 132, 227, 0.72);
-  --btn-theme-shadow: 0 8px 18px rgba(9, 132, 227, 0.30);
+  --btn-theme-border: rgba(98, 136, 204, 0.74);
+  --btn-theme-shadow: 0 8px 18px rgba(50, 75, 121, 0.30);
   --btn-theme-knob: #ffffff;
-  --btn-reset-bg: linear-gradient(135deg, rgba(214, 48, 49, 0.88), rgba(181, 36, 37, 0.78));
+  --btn-reset-bg: linear-gradient(135deg, rgba(175, 66, 66, 0.90), rgba(140, 50, 50, 0.84));
   --btn-reset-text: #ffffff;
-  --btn-reset-border: rgba(214, 48, 49, 0.76);
-  --btn-reset-shadow: 0 8px 18px rgba(214, 48, 49, 0.28);
-  --btn-transfer-bg: linear-gradient(135deg, #fdcb6e, #f4b942);
-  --btn-transfer-bg-hover: linear-gradient(135deg, #ffd787, #f9c560);
+  --btn-reset-border: rgba(175, 66, 66, 0.76);
+  --btn-reset-shadow: 0 8px 18px rgba(132, 48, 48, 0.28);
+  --btn-transfer-bg: linear-gradient(135deg, #cfad64, #b38737);
+  --btn-transfer-bg-hover: linear-gradient(135deg, #d9b972, #bc9442);
   --btn-transfer-text: var(--warning-contrast);
-  --btn-transfer-border: rgba(244, 185, 66, 0.80);
-  --btn-transfer-shadow: 0 8px 16px rgba(184, 131, 23, 0.22);
-  --placar-pagar-bg1: #ffffff;
-  --placar-pagar-bg2: #ffffff;
-  --placar-pagar-border: rgba(214, 48, 49, 0.32);
-  --placar-pagar-value: #2c3e50;
-  --placar-pago-bg1: #ffffff;
-  --placar-pago-bg2: #ffffff;
-  --placar-pago-border: rgba(0, 184, 148, 0.34);
-  --placar-pago-value: #2c3e50;
-  --placar-geral-bg1: #ffffff;
-  --placar-geral-bg2: #ffffff;
-  --placar-geral-border: rgba(9, 132, 227, 0.36);
-  --placar-geral-value: #2c3e50;
+  --btn-transfer-border: rgba(163, 125, 54, 0.82);
+  --btn-transfer-shadow: 0 8px 16px rgba(112, 84, 35, 0.24);
+  --placar-pagar-bg1: #f9f7fa;
+  --placar-pagar-bg2: #f3eff5;
+  --placar-pagar-border: rgba(143, 67, 67, 0.34);
+  --placar-pagar-value: var(--highlight-value-negative);
+  --placar-pago-bg1: #f8fbfa;
+  --placar-pago-bg2: #f1f6f4;
+  --placar-pago-border: rgba(53, 106, 88, 0.34);
+  --placar-pago-value: var(--highlight-value-positive);
+  --placar-geral-bg1: #faf8f4;
+  --placar-geral-bg2: #f4f0e9;
+  --placar-geral-border: rgba(154, 104, 50, 0.34);
+  --placar-geral-value: var(--highlight-value-main);
 }
 
-body.light-mode .card-atrasado h3 { color: #c0392b; }
-body.light-mode .card-pendente h3 { color: #9a7a08; }
-body.light-mode .card-recebido h3 { color: #1e8449; }
-body.light-mode .tab-btn { box-shadow: 0 1px 4px rgba(44, 62, 80, 0.10); }
-body.light-mode .tabs-eco-container { background: #f1f5f9; }
-body.light-mode .tab-eco.active { box-shadow: 0 4px 12px rgba(9, 132, 227, 0.25); }
+body.light-mode .card-atrasado h3 { color: #944747; }
+body.light-mode .card-pendente h3 { color: #855826; }
+body.light-mode .card-recebido h3 { color: #2f5e4d; }
+body.light-mode .tabs-eco-container { background: #dbe3f0; }
+body.light-mode .tab-eco.active { box-shadow: 0 6px 14px rgba(53, 88, 157, 0.30); }
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
@@ -168,6 +176,387 @@ body {
   color: var(--text-main);
   overflow-x: hidden;
   transition: background-color var(--motion-theme) ease, color var(--motion-theme) ease;
+}
+
+body.page-open-enter .main-content {
+  opacity: 0;
+  transform: translateY(30px) scale(0.985);
+  filter: blur(8px);
+  will-change: opacity, transform, filter;
+}
+
+body.page-open-enter.page-open-enter-active .main-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+  transition:
+    opacity var(--motion-page-open) var(--motion-cinema),
+    transform var(--motion-page-open) var(--motion-cinema),
+    filter var(--motion-page-open) var(--motion-cinema);
+}
+
+body.page-open-enter .notificacoes-hoje {
+  opacity: 0;
+  transform: translateY(-14px) scale(0.96);
+}
+
+body.page-open-enter.page-open-enter-active .notificacoes-hoje {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity calc(var(--motion-page-open) - 80ms) var(--motion-cinema),
+    transform calc(var(--motion-page-open) - 80ms) var(--motion-cinema);
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.brand-logo--hero {
+  display: flex;
+  width: 96px;
+  margin: 0 auto 14px;
+  opacity: 0.94;
+  filter: saturate(1.08) contrast(1.08);
+  pointer-events: none;
+}
+
+.brand-logo--hero img {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.28));
+}
+
+.brand-logo--watermark {
+  position: fixed;
+  right: 10px;
+  bottom: 8px;
+  width: 74px;
+  z-index: 30;
+  opacity: 0.34;
+  filter: saturate(1.04) contrast(1.08) drop-shadow(0 10px 16px rgba(0, 0, 0, 0.32));
+  pointer-events: none;
+}
+
+body.light-mode .brand-logo--hero {
+  opacity: 0.84;
+}
+
+body.light-mode .brand-logo--watermark {
+  opacity: 0.22;
+}
+
+@media (max-width: 600px) {
+  .brand-logo--hero {
+    width: 78px;
+    margin-bottom: 10px;
+  }
+
+  .brand-logo--watermark {
+    width: 62px;
+    right: 8px;
+    bottom: 6px;
+  }
+}
+
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  isolation: isolate;
+  transition: opacity 1100ms var(--motion-ease), visibility 0ms linear 1100ms;
+}
+
+.intro-splash::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 62%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 48%),
+    radial-gradient(circle at 16% 24%, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0) 36%),
+    radial-gradient(circle at 84% 74%, rgba(236, 72, 153, 0.1) 0%, rgba(236, 72, 153, 0) 36%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.22) 0.9px, transparent 1.8px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 150px 150px;
+  animation: splash-particles-drift 12s linear infinite;
+  opacity: 0.9;
+  pointer-events: none;
+  filter: saturate(1.15) contrast(1.06);
+}
+
+.intro-splash::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 55%, rgba(255,255,255,0.18), transparent 62%);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: splashFlash 520ms ease 2450ms forwards;
+}
+
+.intro-splash-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.intro-splash-brand {
+  width: min(92vw, 780px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+  z-index: 2;
+  transition: opacity 460ms var(--motion-cinema), transform 460ms var(--motion-cinema), filter 460ms var(--motion-cinema);
+}
+
+.intro-splash-wordmark {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(14px) scale(0.94);
+  filter: blur(10px);
+  pointer-events: none;
+  transition: opacity 560ms var(--motion-cinema), transform 560ms var(--motion-cinema), filter 560ms var(--motion-cinema);
+}
+
+.intro-splash-wordmark-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(58px, 18vw, 164px);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  background:
+    radial-gradient(circle at 14% 34%, #2fd7ff 0%, transparent 34%),
+    radial-gradient(circle at 36% 46%, #ff5da9 0%, transparent 36%),
+    radial-gradient(circle at 62% 24%, #ffd14f 0%, transparent 35%),
+    radial-gradient(circle at 84% 56%, #9a6aff 0%, transparent 38%),
+    linear-gradient(110deg, #33d6ff 0%, #5aaeff 18%, #ff4fa8 44%, #ffc54f 66%, #9ce86b 79%, #b05fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px rgba(255, 89, 184, 0.2));
+}
+
+.intro-splash.splash-show-wordmark .intro-splash-brand {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.intro-splash.splash-show-wordmark .intro-splash-wordmark {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.intro-splash-logo-svg {
+  display: grid;
+  place-items: center;
+}
+
+.logo-svg-pro {
+  width: 200px;
+  opacity: 0;
+  transform: scale(0.75) rotate(-8deg);
+  filter: blur(15px);
+  animation:
+    logoProEnter 1.2s cubic-bezier(0.16,1,0.3,1) forwards,
+    pulseProGlow 2.5s ease 2s infinite;
+}
+
+@keyframes logoProEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.75) rotate(-8deg);
+    filter: blur(15px);
+  }
+  60% {
+    transform: scale(1.08) rotate(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    filter: blur(0);
+  }
+}
+
+.hex-outer {
+  opacity: 0;
+  animation: hexGlow 0.8s ease 0.4s forwards;
+}
+
+@keyframes hexGlow {
+  to { opacity: 1; }
+}
+
+.bar-pro {
+  fill: #f7d774;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+.bar1 { animation: growBar 0.4s ease 0.9s forwards; }
+.bar2 { animation: growBar 0.4s ease 1.05s forwards; }
+.bar3 { animation: growBar 0.4s ease 1.2s forwards; }
+
+@keyframes growBar {
+  to { transform: scaleY(1); }
+}
+
+.arrow-pro {
+  stroke-dasharray: 240;
+  stroke-dashoffset: 240;
+  animation: drawArrow 0.7s ease 1.3s forwards;
+}
+
+@keyframes drawArrow {
+  to { stroke-dashoffset: 0; }
+}
+
+.arrow-head-pro {
+  opacity: 0;
+  transform: scale(0.7);
+  transform-origin: center;
+  animation: arrowHeadPop 0.3s ease 1.8s forwards;
+}
+
+@keyframes arrowHeadPop {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseProGlow {
+  0% { filter: drop-shadow(0 0 0px rgba(255,60,166,0)); }
+  50% { filter: drop-shadow(0 0 28px rgba(255,60,166,0.55)); }
+  100% { filter: drop-shadow(0 0 0px rgba(255,60,166,0)); }
+}
+
+.intro-splash-progress {
+  width: min(68%, 520px);
+  min-width: 210px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 16px rgba(236, 72, 153, 0.16);
+}
+
+.intro-splash-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #30d2ff 0%, #63b4ff 20%, #ff4ca8 48%, #ffc44d 68%, #9d65ff 100%);
+  background-size: 220% 100%;
+  box-shadow: 0 0 16px rgba(236, 72, 153, 0.34);
+  will-change: transform;
+  animation: splash-progress-hue 2.4s linear infinite;
+}
+
+.intro-splash-sound {
+  margin-top: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.78);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 220ms var(--motion-cinema), background 220ms var(--motion-cinema);
+  backdrop-filter: blur(10px);
+}
+
+.intro-splash-sound:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.10);
+}
+
+.intro-splash.splash-fade {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-splash.splash-hidden {
+  display: none;
+}
+
+@keyframes splash-particles-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes splash-progress-hue {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes splashFlash {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-splash,
+  .intro-splash::before,
+  .intro-splash::after,
+  .logo-svg-pro,
+  .intro-splash-wordmark,
+  .intro-splash-wordmark-text,
+  .hex-outer,
+  .hex-inner,
+  .bar-pro,
+  .arrow-pro,
+  .arrow-head-pro,
+  .intro-splash-progress-fill {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .logo-svg-pro {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .intro-splash-wordmark {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .intro-splash-canvas {
+    display: none;
+  }
 }
 
 body.theme-switching,
@@ -232,6 +621,17 @@ body.theme-switching::after {
     animation: none;
     opacity: 0;
   }
+
+  body.page-open-enter .main-content,
+  body.page-open-enter .notificacoes-hoje,
+  body.page-open-enter.page-open-enter-active .main-content,
+  body.page-open-enter.page-open-enter-active .notificacoes-hoje {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
 }
 
 .app-container { display: flex; min-height: 100vh; height: 100dvh; transition: 0.3s; }
@@ -242,6 +642,21 @@ body.theme-switching::after {
   background: var(--bg-surface); color: var(--primary); border: 1px solid var(--border-color);
   width: 42px; height: 42px; border-radius: 10px; cursor: pointer; 
   box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 0;
+  overflow: visible;
+}
+
+#toggle-sidebar img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
 }
 
 .btn-voltar-flutuante {
@@ -288,6 +703,11 @@ body.theme-switching::after {
   position: relative; 
 }
 
+.sidebar .backup-area {
+    margin-top: auto;
+    padding-top: 12px;
+}
+
 /* ADICIONE ISTO PARA O MENU FLUTUAR NO CELULAR */
 @media (max-width: 768px) {
     .sidebar {
@@ -315,16 +735,735 @@ body.theme-switching::after {
 }
 .menu-meses-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 
-.menu-meses-grid button { 
+.menu-meses-grid button,
+.menu-meses-lista button,
+.menu-ano-toggle {
   width: 100%; padding: 12px 15px; background: rgba(255,255,255,0.05); 
   border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); 
   border-radius: 8px; cursor: pointer; text-align: left; 
   font-size: 0.95rem; transition: 0.2s; display: flex; justify-content: space-between;
 }
-.menu-meses-grid button:hover { background: rgba(255,255,255,0.15); color: white; }
-.menu-meses-grid button.active { 
+.menu-meses-grid button:hover,
+.menu-meses-lista button:hover,
+.menu-ano-toggle:hover { background: rgba(255,255,255,0.15); color: white; }
+.menu-meses-grid button.active,
+.menu-meses-lista button.active { 
   background: var(--primary); color: white; font-weight: bold; 
   border-color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+}
+
+.menu-ano-toggle {
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.menu-ano-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.menu-ano-header.menu-ano-header--single {
+  grid-template-columns: 1fr;
+}
+
+.menu-ano-link {
+  align-items: center;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.menu-ano-toggle-label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.menu-ano-toggle i {
+  transition: transform 220ms ease;
+}
+
+.menu-ano-toggle.expanded i {
+  transform: rotate(180deg);
+}
+
+.menu-meses-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  max-height: 640px;
+  opacity: 1;
+  margin-top: 0;
+  transition: max-height 260ms var(--motion-ease), opacity 220ms ease, margin 220ms ease;
+}
+
+.menu-meses-lista.is-collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin-top: -2px;
+  pointer-events: none;
+}
+
+body.pagina-resumo-ano .resumo-ano-main {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-top: 26px;
+  position: relative;
+  z-index: 1;
+}
+
+body.pagina-resumo-ano {
+  isolation: isolate;
+}
+
+body.pagina-resumo-ano .resumo-ano-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+body.pagina-resumo-ano .brand-logo--hero {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: auto;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+body.pagina-resumo-ano .brand-logo--hero img {
+  width: min(120vmin, 1600px);
+  height: auto;
+  max-width: none;
+  filter: none;
+}
+
+body.pagina-resumo-ano #titulo-resumo-ano {
+  font-size: clamp(1.9rem, 4.6vw, 2.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 10px;
+  text-align: center;
+  background: linear-gradient(90deg, #c7d59a 0%, #9aae5b 45%, #6f7f39 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.22));
+}
+
+body.light-mode.pagina-resumo-ano #titulo-resumo-ano {
+  background: linear-gradient(90deg, #6e7b3f 0%, #7f8f49 45%, #93a85a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.pagina-resumo-ano #titulo-resumo-ano::after {
+  content: '';
+  display: block;
+  width: 92px;
+  height: 3px;
+  margin: 8px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #b8c98b, #7f8f49);
+}
+
+body.pagina-resumo-ano .subtitulo-resumo-ano {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 820px;
+  font-family: 'Montserrat', 'Segoe UI', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--text-muted);
+  opacity: 0;
+  max-height: 64px;
+  overflow: hidden;
+  transform: translateY(8px);
+  animation: subtitulo-despesas-entrada 2100ms var(--motion-ease) 260ms forwards;
+  transition: opacity 760ms ease, max-height 760ms ease, margin 760ms ease, transform 760ms ease;
+}
+
+body.pagina-resumo-ano .subtitulo-resumo-ano.oculto {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  transform: translateY(-4px);
+  animation: none;
+  pointer-events: none;
+}
+
+.resumo-ano-visualizacao {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 16px;
+}
+
+.resumo-ano-tabela-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
+  overflow: hidden;
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: max-height 620ms var(--motion-ease), opacity 520ms ease, transform 560ms var(--motion-ease), margin 560ms var(--motion-ease);
+}
+
+.resumo-ano-tabela-controles.oculto-grafico {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  margin-bottom: 0;
+  pointer-events: none;
+}
+
+.resumo-ano-tabela-controles label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  color: var(--text-muted);
+}
+
+.resumo-ano-tabela-controles select {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 8px 10px;
+  min-width: min(320px, 92vw);
+  max-width: 100%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  outline: none;
+}
+
+.resumo-ano-tabela-controles select:focus {
+  border-color: var(--primary);
+}
+
+.btn-resumo-grafico {
+  width: fit-content;
+  min-width: 160px;
+  padding: 10px 16px;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+}
+
+.btn-resumo-grafico:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.btn-resumo-ordenar {
+  width: fit-content;
+  min-width: 152px;
+  padding: 9px 14px;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+}
+
+.btn-resumo-ordenar:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.resumo-ano-oculto {
+  display: none !important;
+}
+
+.resumo-ano-cards {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  margin-bottom: 20px;
+}
+
+.resumo-ano-tabela-wrap {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-surface);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  max-height: 1900px;
+  opacity: 1;
+  transform: translateY(0);
+  transform-origin: top center;
+  will-change: max-height, opacity, transform;
+  transition: max-height 760ms var(--motion-ease), opacity 680ms ease, transform 700ms var(--motion-ease), margin 700ms var(--motion-ease), border-color 420ms ease, box-shadow 420ms ease;
+}
+
+.resumo-ano-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resumo-ano-tabela th,
+.resumo-ano-tabela td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+  font-size: 0.9rem;
+  transition: background-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+
+.resumo-ano-tabela th {
+  font-size: 0.76rem;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: var(--bg-card);
+}
+
+.resumo-ano-tabela tbody tr:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.resumo-ano-tabela[data-metrica-ordenacao="mes"] thead th:nth-child(1),
+.resumo-ano-tabela[data-metrica-ordenacao="mes"] tbody td:nth-child(1) {
+  background: rgba(149, 165, 166, 0.14);
+  color: #d7e2ff;
+}
+
+.resumo-ano-tabela[data-metrica-ordenacao="recebido"] thead th:nth-child(2),
+.resumo-ano-tabela[data-metrica-ordenacao="recebido"] tbody td:nth-child(2) {
+  background: rgba(52, 152, 219, 0.14);
+  color: #7fceff;
+  font-weight: 800;
+}
+
+.resumo-ano-tabela[data-metrica-ordenacao="pendente"] thead th:nth-child(3),
+.resumo-ano-tabela[data-metrica-ordenacao="pendente"] tbody td:nth-child(3) {
+  background: rgba(241, 196, 15, 0.14);
+  color: #ffd67f;
+  font-weight: 800;
+}
+
+.resumo-ano-tabela[data-metrica-ordenacao="liquido"] thead th:nth-child(4),
+.resumo-ano-tabela[data-metrica-ordenacao="liquido"] tbody td:nth-child(4) {
+  background: rgba(46, 204, 113, 0.14);
+  font-weight: 800;
+}
+
+.resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] thead th:nth-child(5),
+.resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] tbody td:nth-child(5) {
+  background: rgba(231, 76, 60, 0.14);
+  color: #ff9d94;
+  font-weight: 800;
+}
+
+.resumo-ano-tabela[data-metrica-ordenacao="mes"] .resumo-tabela-linha-topo td:nth-child(1),
+.resumo-ano-tabela[data-metrica-ordenacao="recebido"] .resumo-tabela-linha-topo td:nth-child(2),
+.resumo-ano-tabela[data-metrica-ordenacao="pendente"] .resumo-tabela-linha-topo td:nth-child(3),
+.resumo-ano-tabela[data-metrica-ordenacao="liquido"] .resumo-tabela-linha-topo td:nth-child(4),
+.resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] .resumo-tabela-linha-topo td:nth-child(5) {
+  box-shadow: inset 0 0 0 1px var(--primary), inset 0 0 0 999px rgba(255, 255, 255, 0.06);
+  font-weight: 800;
+}
+
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="mes"] thead th:nth-child(1),
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="mes"] tbody td:nth-child(1) {
+  color: #34557f;
+}
+
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="recebido"] thead th:nth-child(2),
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="recebido"] tbody td:nth-child(2) {
+  color: #1f6ca9;
+}
+
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="pendente"] thead th:nth-child(3),
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="pendente"] tbody td:nth-child(3) {
+  color: #8d5f1f;
+}
+
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] thead th:nth-child(5),
+body.light-mode .resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] tbody td:nth-child(5) {
+  color: #9c3936;
+}
+
+.resumo-ano-grafico-wrap {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--bg-surface);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  padding: 16px 14px;
+  --grafico-accent: rgba(88, 214, 141, 0.95);
+  --grafico-accent-2: rgba(39, 174, 96, 0.92);
+  --grafico-accent-text: var(--highlight-value-positive);
+  --grafico-track-highlight: rgba(39, 174, 96, 0.58);
+  --grafico-track-glow: rgba(39, 174, 96, 0.20);
+  max-height: 1200px;
+  opacity: 1;
+  transform: translateY(0);
+  transform-origin: top center;
+  overflow: hidden;
+  will-change: max-height, opacity, transform;
+  transition: max-height 760ms var(--motion-ease), opacity 680ms ease, transform 700ms var(--motion-ease), margin 700ms var(--motion-ease), border-color 420ms ease, box-shadow 420ms ease, padding 700ms var(--motion-ease);
+}
+
+.resumo-ano-grafico-wrap[data-metrica="recebido"] {
+  --grafico-accent: rgba(93, 192, 255, 0.96);
+  --grafico-accent-2: rgba(44, 135, 212, 0.92);
+  --grafico-accent-text: #7fceff;
+  --grafico-track-highlight: rgba(52, 152, 219, 0.64);
+  --grafico-track-glow: rgba(52, 152, 219, 0.22);
+}
+
+.resumo-ano-grafico-wrap[data-metrica="pendente"] {
+  --grafico-accent: rgba(255, 214, 127, 0.96);
+  --grafico-accent-2: rgba(209, 150, 34, 0.92);
+  --grafico-accent-text: #ffd67f;
+  --grafico-track-highlight: rgba(241, 196, 15, 0.66);
+  --grafico-track-glow: rgba(241, 196, 15, 0.22);
+}
+
+.resumo-ano-grafico-wrap[data-metrica="despesasPagas"] {
+  --grafico-accent: rgba(255, 157, 148, 0.95);
+  --grafico-accent-2: rgba(231, 76, 60, 0.95);
+  --grafico-accent-text: #ff9d94;
+  --grafico-track-highlight: rgba(231, 76, 60, 0.66);
+  --grafico-track-glow: rgba(231, 76, 60, 0.24);
+}
+
+.resumo-ano-tabela-wrap.resumo-ano-painel-oculto,
+.resumo-ano-grafico-wrap.resumo-ano-painel-oculto {
+  max-height: 0 !important;
+  opacity: 0;
+  transform: translateY(-12px) scale(0.99);
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-color: transparent;
+  box-shadow: none;
+  pointer-events: none;
+  overflow: hidden !important;
+}
+
+.resumo-ano-grafico-wrap.resumo-ano-painel-oculto {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.resumo-ano-grafico-titulo {
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 0.96rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.resumo-ano-grafico-controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 10px;
+}
+
+.resumo-ano-grafico-controles label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  color: var(--text-muted);
+}
+
+.resumo-ano-grafico-controles select {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 8px 10px;
+  min-width: min(380px, 92vw);
+  max-width: 100%;
+  font-size: 0.85rem;
+  font-weight: 700;
+  outline: none;
+}
+
+.resumo-ano-grafico-controles select:focus {
+  border-color: var(--primary);
+}
+
+.resumo-ano-melhor-mes {
+  text-align: center;
+  margin: 0 0 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.resumo-ano-melhor-mes.destaque-positivo {
+  color: var(--success);
+}
+
+.resumo-ano-melhor-mes.destaque-neutro {
+  color: var(--text-muted);
+}
+
+.resumo-ano-insights {
+  margin: 0 0 12px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.resumo-ano-grafico-lista {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(76px, 1fr));
+  align-items: end;
+  gap: 10px;
+  min-height: 280px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+}
+
+.resumo-ano-coluna {
+  min-width: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.resumo-ano-coluna-valor {
+  font-size: 0.74rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.resumo-ano-coluna-valor.positivo {
+  color: var(--grafico-accent-text, var(--highlight-value-positive));
+}
+
+.resumo-ano-coluna-valor.negativo {
+  color: var(--highlight-value-negative);
+}
+
+.resumo-ano-coluna-valor.neutro {
+  color: var(--text-muted);
+}
+
+.resumo-ano-coluna-track {
+  position: relative;
+  width: min(64px, 100%);
+  height: 216px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: color-mix(in srgb, var(--bg-card) 62%, transparent);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.resumo-ano-coluna-track.tem-negativo::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: var(--zero-line, 50%);
+  border-top: 1px dashed rgba(255, 255, 255, 0.20);
+  pointer-events: none;
+}
+
+.resumo-ano-coluna-regiao {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.resumo-ano-coluna-regiao.positivo {
+  align-items: flex-end;
+  padding: 4px 0 2px;
+}
+
+.resumo-ano-coluna-regiao.negativo {
+  align-items: flex-start;
+  padding: 2px 0 4px;
+}
+
+.resumo-ano-coluna-bar {
+  display: block;
+  width: 72%;
+  min-height: 2px;
+  border-radius: 8px;
+  transition: height 260ms ease;
+}
+
+.resumo-ano-coluna-bar.positivo {
+  background: linear-gradient(180deg, var(--grafico-accent), var(--grafico-accent-2));
+}
+
+.resumo-ano-coluna-bar.negativo {
+  background: linear-gradient(180deg, rgba(255, 118, 102, 0.92), rgba(231, 76, 60, 0.95));
+}
+
+.resumo-ano-coluna-bar.neutro {
+  background: linear-gradient(180deg, rgba(162, 175, 196, 0.92), rgba(119, 136, 163, 0.90));
+}
+
+.resumo-ano-coluna-mes {
+  font-size: 0.80rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.resumo-ano-grafico-vazio {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 18px 10px;
+}
+
+.resumo-ano-coluna.destaque .resumo-ano-coluna-track {
+  border-color: var(--grafico-track-highlight);
+  box-shadow: 0 0 0 1px var(--grafico-track-glow);
+}
+
+body.light-mode .resumo-ano-grafico-wrap[data-metrica="recebido"] {
+  --grafico-accent-text: #1f6ca9;
+}
+
+body.light-mode .resumo-ano-grafico-wrap[data-metrica="pendente"] {
+  --grafico-accent-text: #8d5f1f;
+}
+
+body.light-mode .resumo-ano-grafico-wrap[data-metrica="despesasPagas"] {
+  --grafico-accent-text: #9c3936;
+}
+
+.resumo-liquido-positivo {
+  color: var(--highlight-value-positive);
+  font-weight: 700;
+}
+
+.resumo-liquido-negativo {
+  color: var(--highlight-value-negative);
+  font-weight: 700;
+}
+
+.resumo-acoes-mes {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-mini {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.btn-mini:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-mini-alt:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.btn-mini-eco:hover {
+  border-color: #f1c40f;
+  color: #fff3c4;
+  filter: brightness(1.06);
+}
+
+body.light-mode .btn-mini-eco:hover {
+  border-color: #b8860b;
+  color: #5f4300;
+}
+
+@media (max-width: 900px) {
+  body.pagina-resumo-ano .brand-logo--hero img {
+    width: min(130vmin, 980px);
+  }
+
+  .resumo-ano-grafico-controles {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resumo-ano-grafico-controles select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .resumo-ano-grafico-lista {
+    grid-template-columns: repeat(12, minmax(64px, 1fr));
+    min-height: 250px;
+  }
+
+  .resumo-ano-tabela-controles {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resumo-ano-tabela-controles select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .btn-resumo-ordenar {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resumo-ano-coluna {
+    min-width: 62px;
+  }
+
+  .resumo-ano-coluna-track {
+    width: min(54px, 100%);
+    height: 188px;
+  }
+
+  .resumo-ano-coluna-mes,
+  .resumo-ano-coluna-valor {
+    font-size: 0.74rem;
+  }
+
+  .resumo-ano-tabela-wrap {
+    overflow-x: auto;
+  }
+
+  .resumo-ano-tabela {
+    min-width: 760px;
+  }
 }
 
 
@@ -435,19 +1574,9 @@ body.light-mode .btn-tema-toggle::before {
   transition: border-color var(--motion-theme) ease;
 }
 
-/* Na aba economias, desce o bloco: tema + exportar + importar + zerar */
+/* Na aba economias, mantem respiro entre navegacao e bloco de acoes inferiores */
 body.pagina-economias .botoes-financeiros {
   gap: 24px;
-}
-
-body.pagina-economias .backup-area {
-  margin-top: 126px;
-}
-
-@media (max-width: 768px) {
-  body.pagina-economias .backup-area {
-    margin-top: 92px;
-  }
 }
 
 
@@ -478,9 +1607,13 @@ body.pagina-economias .backup-area {
     
     /* Sombra Bonita (Colorida e difusa) */
     box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    animation: pulse-glow 2s infinite, cadastro-pisca 1.6s ease-in-out infinite;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 #btn-abrir-cadastro:hover {
+    animation: none;
     transform: translateY(-3px); /* Flutua ao passar o mouse */
     box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
     filter: brightness(1.05);
@@ -518,6 +1651,7 @@ body.pagina-economias .backup-area {
         
         /* Sombra mais forte para destacar do fundo */
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        animation: pulse-glow 2s infinite, cadastro-pisca 1.6s ease-in-out infinite !important;
     }
 
     /* Esconde o TEXTO no mobile */
@@ -541,6 +1675,11 @@ body.pagina-economias .backup-area {
         font-size: 24px;
         line-height: 1;
         transform: translateY(-0.5px);
+    }
+
+    #btn-abrir-cadastro:hover,
+    #btn-abrir-cadastro:active {
+        transform: none !important;
     }
 
     
@@ -710,7 +1849,7 @@ body.light-mode .dashboard-despesas .card:hover {
 }
 
 .dashboard-despesas .card-geral h3 {
-    color: #6bb3f2;
+    color: #f6d365;
 }
 
 .dashboard-despesas .card-geral p {
@@ -726,7 +1865,7 @@ body.light-mode .dashboard-despesas .card-pago h3 {
 }
 
 body.light-mode .dashboard-despesas .card-geral h3 {
-    color: #0d74c7;
+    color: #b8860b;
 }
 
 @media (max-width: 980px) {
@@ -834,9 +1973,31 @@ body:not(.light-mode) .pendente-row { background: rgba(241, 196, 15, 0.1); borde
 body:not(.light-mode) .pago-row { background: rgba(46, 204, 113, 0.1); border-left: 4px solid var(--success); }
 
 
-body.light-mode .atrasado-row { background: #fff5f5; border-left: 4px solid var(--danger); }
-body.light-mode .pendente-row { background: #fffcf2; border-left: 4px solid var(--warning); }
-body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--success); }
+body.light-mode .sub-lista {
+  background: #f3ead2;
+}
+
+body.light-mode .item-agrupado {
+  background: #f3ead2;
+  border-color: rgba(136, 112, 72, 0.32);
+  box-shadow: 0 4px 10px rgba(74, 57, 28, 0.08);
+}
+
+body.light-mode .pasta-header-parcela {
+  background: #f3ead2;
+  color: #4f3f25;
+  border-left-color: #a1844d;
+}
+
+body.light-mode .pasta-header-parcela span:last-child {
+  background-color: #e7d8b5 !important;
+  color: #5f4a27 !important;
+  border-color: rgba(124, 101, 58, 0.35);
+}
+
+body.light-mode .atrasado-row { background: #f3ead2; border-left: 4px solid var(--danger); }
+body.light-mode .pendente-row { background: #f3ead2; border-left: 4px solid var(--warning); }
+body.light-mode .pago-row { background: #f3ead2; border-left: 4px solid var(--success); }
 
 .progress-container { height: 8px; background: rgba(0,0,0,0.1); border-radius: 10px; margin: 12px 0 6px; overflow: hidden; }
 .progress-bar { height: 100%; background: linear-gradient(90deg, var(--success), #27ae60); border-radius: 10px; }
@@ -897,6 +2058,288 @@ body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--su
   transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
 
+body:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .tabs .tab-btn:hover:not(.active) {
+  border-color: #3498db;
+  color: #8fd3ff;
+}
+
+body:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .tabs .tab-btn.active,
+body:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .tabs .tab-btn.active:hover {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.30);
+}
+
+.contador-busca {
+  margin-left: auto;
+  align-self: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(52, 152, 219, 0.35);
+  background: rgba(52, 152, 219, 0.12);
+  color: #dbeeff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+body.light-mode .contador-busca {
+  border-color: rgba(125, 141, 170, 0.55);
+  background: rgba(102, 117, 144, 0.26);
+  color: #eef3ff;
+}
+
+.contador-busca[hidden] {
+  display: none !important;
+}
+
+.notificacoes-hoje {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1250;
+  display: block;
+  pointer-events: none;
+  transform: none !important;
+}
+
+.notificacoes-trigger {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  color: var(--warning);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: filter 180ms ease, border-color 180ms ease;
+}
+
+.notificacoes-trigger:hover {
+  transform: none;
+  filter: brightness(1.05);
+}
+
+.notificacoes-trigger i {
+  font-size: 1.05rem;
+  color: var(--warning);
+}
+
+.notificacoes-trigger.balancando {
+  animation: sino-balance 1.05s ease-in-out infinite;
+  transform-origin: 50% 8px;
+}
+
+.notificacoes-hoje.aberto .notificacoes-trigger {
+  border-color: rgba(241, 196, 15, 0.58);
+}
+
+@keyframes sino-balance {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-12deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-8deg); }
+  75% { transform: rotate(4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notificacoes-trigger.balancando {
+    animation: none !important;
+  }
+}
+
+.notificacoes-painel {
+  position: absolute !important;
+  top: 60px !important;
+  right: 10px !important;
+  width: min(320px, calc(100vw - 24px));
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  border-top: 3px solid var(--warning);
+  background: var(--bg-surface);
+  background: color-mix(in srgb, var(--bg-surface) 88%, transparent);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 10px 10px 8px;
+  pointer-events: auto;
+}
+
+.notificacoes-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.notificacoes-header i {
+  color: var(--warning);
+}
+
+.notificacoes-header strong {
+  font-size: 0.85rem;
+  letter-spacing: 0.35px;
+  text-transform: uppercase;
+}
+
+.notificacoes-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(241, 196, 15, 0.55);
+  background: rgba(241, 196, 15, 0.15);
+  color: #ffe59e;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.notificacoes-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: min(45vh, 290px);
+  overflow-y: auto;
+}
+
+.notificacoes-secao {
+  list-style: none;
+  margin-top: 4px;
+}
+
+.notificacoes-secao-titulo {
+  display: block;
+  padding: 2px 2px 0;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.notificacoes-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--warning);
+  border-radius: 10px;
+  padding: 8px 10px;
+  background: var(--bg-card);
+  background: color-mix(in srgb, var(--bg-card) 70%, transparent);
+}
+
+.notificacoes-item.notificacao-atrasada {
+  border-left-color: var(--danger);
+}
+
+.notificacoes-item.notificacao-hoje {
+  border-left-color: var(--warning);
+}
+
+.notificacoes-item.notificacao-amanha {
+  border-left-color: var(--primary);
+}
+
+.notificacoes-item-info {
+  min-width: 0;
+}
+
+.notificacoes-item-nome {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notificacoes-item-data {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.notificacoes-item-valor {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--highlight-value-warning);
+}
+
+body.light-mode .notificacoes-trigger {
+  color: #b8860b;
+}
+
+body.light-mode .notificacoes-trigger i {
+  color: #b8860b;
+}
+
+body.light-mode .notificacoes-painel {
+  background: rgba(244, 249, 255, 0.95);
+  box-shadow: 0 10px 24px rgba(44, 62, 80, 0.18);
+}
+
+body.light-mode .notificacoes-badge {
+  background: rgba(253, 203, 110, 0.22);
+  color: #7a5800;
+  border-color: rgba(214, 148, 0, 0.45);
+}
+
+body.light-mode .notificacoes-item-valor {
+  color: var(--highlight-value-warning);
+}
+
+.notificacoes-vazio {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 14px 8px;
+}
+
+@media (max-width: 768px) {
+  .notificacoes-trigger {
+    top: 10px !important;
+    right: 10px !important;
+  }
+
+  .notificacoes-painel {
+    top: 60px !important;
+    right: 10px !important;
+    width: min(290px, calc(100vw - 22px));
+    padding: 9px 9px 8px;
+  }
+
+  .notificacoes-lista {
+    max-height: min(38vh, 240px);
+  }
+}
+
 
 
 
@@ -912,7 +2355,7 @@ body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--su
 }
 
 .saldo-grande small { color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-.saldo-grande h2 { font-size: 3.5rem; color: var(--success); margin-top: 10px; }
+.saldo-grande h2 { font-size: 3.5rem; color: var(--highlight-value-main); margin-top: 10px; }
 
 .controles-economias { display: flex; flex-direction: column; gap: 15px; }
 
@@ -924,11 +2367,16 @@ body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--su
 }
 .input-grupo input:focus { border-color: var(--primary); }
 
-.botoes-acao { display: flex; gap: 15px; }
+.botoes-acao { display: flex; gap: 15px; align-items: stretch; }
 .botoes-acao button {
-    flex: 1; padding: 15px; border: none; border-radius: 10px;
+    flex: 1 1 0;
+    min-height: 52px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 10px;
     font-weight: bold; cursor: pointer; font-size: 1rem; color: white;
     display: flex; align-items: center; justify-content: center; gap: 10px;
+    line-height: 1.1;
     transition: transform 0.2s;
 }
 .botoes-acao button:hover { transform: translateY(-3px); }
@@ -946,6 +2394,21 @@ body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--su
 .tipo-deposito { color: var(--success); font-weight: bold; }
 .tipo-saque { color: var(--danger); font-weight: bold; }
 .data-extrato { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+body.light-mode.pagina-economias .titulo-extrato {
+    color: #5f4a27;
+}
+
+body.light-mode.pagina-economias .item-extrato {
+    background: #f3ead2;
+    border: 1px solid rgba(136, 112, 72, 0.30);
+    box-shadow: 0 4px 10px rgba(74, 57, 28, 0.08);
+}
+
+body.light-mode.pagina-economias .item-extrato > div > div:first-child {
+    background: #e7d8b5 !important;
+    color: #5f4a27;
+}
 
 /* Responsivo para celular */
 @media (max-width: 768px) {
@@ -1117,7 +2580,6 @@ body.light-mode .pago-row { background: #f0fdf4; border-left: 4px solid var(--su
 
 
 
-.sidebar-header h2, 
 #titulo-pagina {
     font-size: 2.2rem;
     font-weight: 900;
@@ -1238,14 +2700,70 @@ body.light-mode .titulo-despesas-wrap {
 .tabs-despesas .tab-btn {
     opacity: 0;
     transform: translateY(16px) scale(0.98);
-    filter: blur(4px);
-    animation: entrada-cinematica 720ms var(--motion-cinema) forwards;
+    filter: none;
+    animation: entrada-cinematica-botoes 720ms var(--motion-cinema) forwards;
 }
 
 .tabs-despesas .tab-btn:nth-child(1) { animation-delay: 520ms; }
 .tabs-despesas .tab-btn:nth-child(2) { animation-delay: 590ms; }
 .tabs-despesas .tab-btn:nth-child(3) { animation-delay: 660ms; }
 .tabs-despesas .tab-btn:nth-child(4) { animation-delay: 730ms; }
+
+/* Mesma entrada de botoes de Despesas aplicada nas demais paginas */
+body:not(.pagina-despesas) .sidebar .botoes-financeiros .btn-card,
+body:not(.pagina-despesas) .sidebar .backup-area .btn-tema-toggle,
+body:not(.pagina-despesas) .sidebar .backup-area .btn-backup,
+body:not(.pagina-despesas) .sidebar .backup-area .btn-reset,
+body:not(.pagina-despesas) .menu-ano-header .menu-ano-link,
+body:not(.pagina-despesas) .menu-ano-header .menu-ano-toggle,
+body:not(.pagina-despesas) #btn-abrir-cadastro,
+body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn,
+body.pagina-economias .tabs-eco-container .tab-eco,
+body.pagina-economias .botoes-acao > button,
+body.pagina-resumo-ano .resumo-ano-visualizacao .btn-resumo-grafico,
+body.pagina-resumo-ano .resumo-ano-tabela-controles .btn-resumo-ordenar {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    filter: none;
+    animation: entrada-cinematica-botoes 720ms var(--motion-cinema) forwards;
+}
+
+body:not(.pagina-despesas) .sidebar .botoes-financeiros .btn-card:nth-child(1) { animation-delay: 120ms; }
+body:not(.pagina-despesas) .sidebar .botoes-financeiros .btn-card:nth-child(2) { animation-delay: 190ms; }
+body:not(.pagina-despesas) .sidebar .botoes-financeiros .btn-card:nth-child(3) { animation-delay: 260ms; }
+
+body:not(.pagina-despesas) .menu-ano-header .menu-ano-link { animation-delay: 330ms; }
+body:not(.pagina-despesas) .menu-ano-header .menu-ano-toggle { animation-delay: 390ms; }
+
+/* Economias: evita "pulo" ao selecionar mes (menu recriado em JS) */
+body.pagina-economias .menu-ano-header .menu-ano-toggle,
+body.pagina-economias .menu-meses-lista button {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+body:not(.pagina-despesas) .sidebar .backup-area .btn-tema-toggle { animation-delay: 450ms; }
+body:not(.pagina-despesas) .sidebar .backup-area .btn-backup-export { animation-delay: 520ms; }
+body:not(.pagina-despesas) .sidebar .backup-area .btn-backup-import { animation-delay: 590ms; }
+body:not(.pagina-despesas) .sidebar .backup-area .btn-reset { animation-delay: 660ms; }
+
+body:not(.pagina-despesas) #btn-abrir-cadastro { animation-delay: 430ms; }
+body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn:nth-child(1) { animation-delay: 500ms; }
+body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn:nth-child(2) { animation-delay: 570ms; }
+body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn:nth-child(3) { animation-delay: 640ms; }
+body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn:nth-child(4) { animation-delay: 710ms; }
+body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn:nth-child(5) { animation-delay: 780ms; }
+
+body.pagina-economias .tabs-eco-container .tab-eco:nth-child(1) { animation-delay: 440ms; }
+body.pagina-economias .tabs-eco-container .tab-eco:nth-child(2) { animation-delay: 520ms; }
+body.pagina-economias .botoes-acao > button:nth-child(1) { animation-delay: 600ms; }
+body.pagina-economias .botoes-acao > button:nth-child(2) { animation-delay: 670ms; }
+body.pagina-economias .botoes-acao > button:nth-child(3) { animation-delay: 740ms; }
+
+body.pagina-resumo-ano .resumo-ano-visualizacao .btn-resumo-grafico { animation-delay: 480ms; }
+body.pagina-resumo-ano .resumo-ano-tabela-controles .btn-resumo-ordenar { animation-delay: 560ms; }
 
 #listaDespesas .lista-item {
     opacity: 0;
@@ -1282,6 +2800,20 @@ body.light-mode .titulo-despesas-wrap {
     }
 }
 
+@keyframes entrada-cinematica-botoes {
+    from {
+        opacity: 0;
+        transform: perspective(900px) translateY(22px) scale(0.97) rotateX(3deg);
+    }
+    58% {
+        opacity: 1;
+    }
+    to {
+        opacity: 1;
+        transform: perspective(900px) translateY(0) scale(1) rotateX(0);
+    }
+}
+
 @keyframes entrada-item-lista {
     from {
         opacity: 0;
@@ -1303,7 +2835,19 @@ body.light-mode .titulo-despesas-wrap {
     .titulo-despesas-wrap,
     .dashboard-despesas .card,
     .tabs-despesas .tab-btn,
-    #listaDespesas .lista-item {
+    #listaDespesas .lista-item,
+    body:not(.pagina-despesas) .sidebar .botoes-financeiros .btn-card,
+    body:not(.pagina-despesas) .sidebar .backup-area .btn-tema-toggle,
+    body:not(.pagina-despesas) .sidebar .backup-area .btn-backup,
+    body:not(.pagina-despesas) .sidebar .backup-area .btn-reset,
+    body:not(.pagina-despesas) .menu-ano-header .menu-ano-link,
+    body:not(.pagina-despesas) .menu-ano-header .menu-ano-toggle,
+    body:not(.pagina-despesas) #btn-abrir-cadastro,
+    body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn,
+    body.pagina-economias .tabs-eco-container .tab-eco,
+    body.pagina-economias .botoes-acao > button,
+    body.pagina-resumo-ano .resumo-ano-visualizacao .btn-resumo-grafico,
+    body.pagina-resumo-ano .resumo-ano-tabela-controles .btn-resumo-ordenar {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
@@ -1315,7 +2859,19 @@ body.light-mode .titulo-despesas-wrap {
     .titulo-despesas-wrap,
     .dashboard-despesas .card,
     .tabs-despesas .tab-btn,
-    #listaDespesas .lista-item {
+    #listaDespesas .lista-item,
+    body:not(.pagina-despesas) .sidebar .botoes-financeiros .btn-card,
+    body:not(.pagina-despesas) .sidebar .backup-area .btn-tema-toggle,
+    body:not(.pagina-despesas) .sidebar .backup-area .btn-backup,
+    body:not(.pagina-despesas) .sidebar .backup-area .btn-reset,
+    body:not(.pagina-despesas) .menu-ano-header .menu-ano-link,
+    body:not(.pagina-despesas) .menu-ano-header .menu-ano-toggle,
+    body:not(.pagina-despesas) #btn-abrir-cadastro,
+    body:not(.pagina-despesas) .tabs:not(.tabs-despesas) .tab-btn,
+    body.pagina-economias .tabs-eco-container .tab-eco,
+    body.pagina-economias .botoes-acao > button,
+    body.pagina-resumo-ano .resumo-ano-visualizacao .btn-resumo-grafico,
+    body.pagina-resumo-ano .resumo-ano-tabela-controles .btn-resumo-ordenar {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
@@ -1336,36 +2892,21 @@ body.light-mode .titulo-despesas-wrap {
     100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
 }
 
-
-#btn-abrir-cadastro {
-    
-    background: linear-gradient(135deg, var(--primary), var(--primary-soft));
-    color: white;
-    
-    
-    animation: pulse-glow 2s infinite;
-    
-    
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    border: 1px solid rgba(255,255,255,0.2);
+@keyframes cadastro-pisca {
+    0%, 100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+    50% {
+        opacity: 0.88;
+        filter: brightness(1.16);
+    }
 }
 
-
-#btn-abrir-cadastro:hover {
-    animation: none;
-    transform: scale(1.05);
-    background: linear-gradient(135deg, var(--primary-soft), var(--primary));
-}
-
-@media (max-width: 600px) {
-    #btn-abrir-cadastro {
-        animation: pulse-glow 2s infinite !important;
-    }
-
-    #btn-abrir-cadastro:hover,
-    #btn-abrir-cadastro:active {
-        transform: none !important;
-    }
+@keyframes pulse-glow-despesas {
+    0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.45); }
+    70% { box-shadow: 0 0 0 16px rgba(231, 76, 60, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
 }
 
 /* --- SCROLLBAR MODERNA (Estilo iOS/Mac) --- */
@@ -1434,8 +2975,63 @@ input:focus, select:focus, textarea:focus {
     background-color: var(--bg-surface); /* Garante contraste */
 }
 
-.titulo-economias {
-    margin-bottom: 20px;
+body.pagina-economias .titulo-economias {
+    margin: 0 0 18px;
+    text-align: center;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-size: clamp(1.9rem, 2.8vw, 2.4rem);
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    line-height: 1.15;
+    background: linear-gradient(90deg, #fff1b8 0%, #ffd166 45%, #d4a63a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.24));
+}
+
+body.pagina-economias .titulo-economias::after {
+    content: '';
+    display: block;
+    width: 92px;
+    height: 3px;
+    margin: 8px auto 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffd166, #c9972e);
+    opacity: 0.9;
+}
+
+body.light-mode.pagina-economias .titulo-economias {
+    background: linear-gradient(90deg, #7c5908 0%, #ac7a0c 45%, #d08e00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+body.pagina-economias .subtitulo-economias {
+    margin: 2px auto 18px;
+    max-width: 760px;
+    text-align: center;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--text-muted);
+    opacity: 0;
+    max-height: 64px;
+    overflow: hidden;
+    transform: translateY(8px);
+    animation: subtitulo-despesas-entrada 2100ms var(--motion-ease) 260ms forwards;
+    transition: opacity 760ms ease, max-height 760ms ease, margin 760ms ease, transform 760ms ease;
+}
+
+body.pagina-economias .subtitulo-economias.oculto {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translateY(-4px);
+    animation: none;
+    pointer-events: none;
 }
 
 .titulo-extrato {
@@ -1448,6 +3044,10 @@ input:focus, select:focus, textarea:focus {
 }
 
 #saldo-poupanca {
+    color: #ffd474;
+}
+
+body.light-mode #saldo-poupanca {
     color: var(--poupanca-primary);
 }
 
@@ -1457,6 +3057,60 @@ input:focus, select:focus, textarea:focus {
 
 .btn-poupanca-resgatar {
     background: var(--poupanca-secondary);
+}
+
+.painel-poupanca .botoes-acao button {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background var(--motion-theme) var(--motion-ease), border-color var(--motion-theme) var(--motion-ease), color var(--motion-theme) var(--motion-ease);
+}
+
+.painel-poupanca .botoes-acao button:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+body.light-mode .painel-poupanca .botoes-acao button {
+    border-color: rgba(44, 62, 80, 0.16);
+    box-shadow: 0 3px 10px rgba(44, 62, 80, 0.12);
+}
+
+.painel-poupanca .botoes-acao .btn-poupanca-depositar {
+    border-color: rgba(52, 152, 219, 0.52);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.30), 0 0 14px rgba(52, 152, 219, 0.24);
+}
+
+.painel-poupanca .botoes-acao .btn-poupanca-depositar:hover {
+    box-shadow: 0 7px 16px rgba(52, 152, 219, 0.36), 0 0 18px rgba(52, 152, 219, 0.30);
+}
+
+.painel-poupanca .botoes-acao .btn-poupanca-resgatar {
+    border-color: rgba(149, 165, 166, 0.55);
+    box-shadow: 0 4px 12px rgba(149, 165, 166, 0.28), 0 0 14px rgba(149, 165, 166, 0.20);
+}
+
+.painel-poupanca .botoes-acao .btn-poupanca-resgatar:hover {
+    box-shadow: 0 7px 16px rgba(149, 165, 166, 0.34), 0 0 18px rgba(149, 165, 166, 0.24);
+}
+
+.painel-poupanca .botoes-acao .btn-resgatar-total {
+    border-color: rgba(155, 89, 182, 0.55);
+    box-shadow: 0 4px 12px rgba(155, 89, 182, 0.30), 0 0 14px rgba(155, 89, 182, 0.24);
+}
+
+.painel-poupanca .botoes-acao .btn-resgatar-total:hover {
+    box-shadow: 0 7px 16px rgba(155, 89, 182, 0.36), 0 0 18px rgba(155, 89, 182, 0.30);
+}
+
+body.light-mode .painel-poupanca .botoes-acao .btn-poupanca-depositar {
+    box-shadow: 0 4px 10px rgba(9, 132, 227, 0.24), 0 0 10px rgba(9, 132, 227, 0.20);
+}
+
+body.light-mode .painel-poupanca .botoes-acao .btn-poupanca-resgatar {
+    box-shadow: 0 4px 10px rgba(127, 140, 141, 0.24), 0 0 10px rgba(127, 140, 141, 0.18);
+}
+
+body.light-mode .painel-poupanca .botoes-acao .btn-resgatar-total {
+    box-shadow: 0 4px 10px rgba(138, 99, 210, 0.25), 0 0 10px rgba(138, 99, 210, 0.18);
 }
 
 
@@ -1472,6 +3126,11 @@ input:focus, select:focus, textarea:focus {
         flex-direction: column; 
     }
 
+    .botoes-acao button {
+        width: 100%;
+        flex: 0 0 auto;
+    }
+
     .saldo-grande h2 {
         font-size: 2.2rem; /* Evita que o saldo "vaze" da tela */
     }
@@ -1480,10 +3139,7 @@ input:focus, select:focus, textarea:focus {
 .botoes-acao .btn-transferir {
     background: var(--btn-transfer-bg);
     color: var(--btn-transfer-text);
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 12px 14px;
+    margin-top: 0;
     font-weight: 600;
     letter-spacing: 0;
     border: 1px solid var(--btn-transfer-border);
@@ -1519,20 +3175,15 @@ input:focus, select:focus, textarea:focus {
 .btn-resgatar-total {
     background: var(--poupanca-accent);
     color: #fff;
-    margin-top: 10px;
-    width: 100%;
-    border-radius: 10px;
-    padding: 12px;
+    margin-top: 0;
     font-weight: bold;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(155, 89, 182, 0.2);
+    transition: transform 0.2s ease, background var(--motion-theme) var(--motion-ease), border-color var(--motion-theme) var(--motion-ease), color var(--motion-theme) var(--motion-ease), box-shadow 0.2s ease;
 }
 .btn-resgatar-total:hover {
     transform: translateY(-2px);
     background: var(--poupanca-accent-hover);
-    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
 }
 
 #lista-mensagens button {
@@ -1620,6 +3271,13 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(-2px);
 }
 
+.btn-resumo-ano-sidebar:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background-color: var(--sidebar-btn-hover-bg);
+    transform: translateY(-2px);
+}
+
 .btn-despesas:hover {
     border-color: #e74c3c;
     color: #e74c3c;
@@ -1627,85 +3285,6 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(-2px);
 }
 
-
-/* Container da lista */
-.container-despesas {
-    display: flex;
-    flex-direction: column;
-    gap: 12px; 
-    padding: 10px;
-    max-width: 600px; 
-    margin: 0 auto; /* Centraliza na tela */
-}
-
-
-.card-despesa {
-    background-color: var(--bg-surface);
-    border-radius: 12px;
-    padding: 15px 20px;
-    
-    /* Sombra super suave para dar profundidade sem poluir */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--border-color);
-    
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Separa texto do valor */
-    
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    
-    /* Detalhe sutil: Borda esquerda vermelha para indicar despesa */
-    border-left: 4px solid var(--danger);
-}
-
-/* Efeito ao passar o mouse */
-.card-despesa:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-
-.icone-categoria {
-    width: 40px;
-    height: 40px;
-    background-color: var(--bg-input);
-    border-radius: 50%; /* Faz ficar redondo */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    color: var(--text-muted);
-}
-
-
-.detalhes-despesa {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1; 
-}
-
-.detalhes-despesa .titulo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    color: var(--text-main);
-    font-size: 0.95rem;
-    margin-bottom: 2px;
-}
-
-.detalhes-despesa .data {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-}
-
-/* O Valor (Dinheiro) */
-.valor-despesa {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    color: var(--danger);
-    letter-spacing: 0.5px;
-}
 
 /* --- FECHAMENTO DA SIDEBAR APENAS NO DESKTOP --- */
 @media (min-width: 769px) {
@@ -1786,6 +3365,10 @@ input:focus, select:focus, textarea:focus {
   border-left-color: var(--success);
 }
 
+.lista-item.pendente {
+  border-left-color: var(--warning);
+}
+
 .lista-item.atrasado {
   border-left-color: var(--danger);
 }
@@ -1850,6 +3433,47 @@ input:focus, select:focus, textarea:focus {
 
 .lista-item.pago .despesa-valor {
   color: var(--success);
+}
+
+body.light-mode.pagina-despesas .lista-item {
+  background: #f3ead2;
+  border-color: rgba(136, 112, 72, 0.30);
+  box-shadow: 0 4px 10px rgba(74, 57, 28, 0.08);
+}
+
+body.light-mode.pagina-despesas .lista-item.atrasado {
+  background: #f3dfd9;
+  border-left-color: #b6504a;
+}
+
+body.light-mode.pagina-despesas .lista-item.pendente {
+  background: #f3ead2;
+  border-left-color: #b8860b;
+}
+
+body.light-mode.pagina-despesas .lista-item.pago {
+  background: #e4efe7;
+  border-left-color: #3f8b63;
+}
+
+body.light-mode.pagina-despesas .despesa-nome {
+  color: #433622;
+}
+
+body.light-mode.pagina-despesas .despesa-data {
+  color: #735f3b;
+}
+
+body.light-mode.pagina-despesas .despesa-valor {
+  color: #8e4638;
+}
+
+body.light-mode.pagina-despesas .lista-item.pendente .despesa-valor {
+  color: #8d5f1f;
+}
+
+body.light-mode.pagina-despesas .lista-item.pago .despesa-valor {
+  color: #2f6b4d;
 }
 
 @media (max-width: 600px) {
@@ -1933,8 +3557,8 @@ body.pagina-despesas .subtitulo-despesas {
   max-height: 64px;
   overflow: hidden;
   transform: translateY(8px);
-  animation: subtitulo-despesas-entrada 1300ms var(--motion-ease) 180ms forwards;
-  transition: opacity 320ms ease, max-height 320ms ease, margin 320ms ease, transform 320ms ease;
+  animation: subtitulo-despesas-entrada 2100ms var(--motion-ease) 260ms forwards;
+  transition: opacity 760ms ease, max-height 760ms ease, margin 760ms ease, transform 760ms ease;
 }
 
 body.pagina-despesas .subtitulo-despesas.oculto {
@@ -2031,12 +3655,886 @@ body.pagina-despesas #btn-abrir-cadastro {
   background: linear-gradient(135deg, #e74c3c, #c0392b);
   border-color: rgba(255, 143, 135, 0.58);
   box-shadow: 0 8px 18px rgba(231, 76, 60, 0.30);
+  animation: pulse-glow-despesas 2s infinite !important;
 }
 
 body.pagina-despesas #btn-abrir-cadastro:hover {
+  animation: none !important;
   background: linear-gradient(135deg, #ef5a4f, #d73b2f);
 }
 
+body.pagina-despesas #toggle-sidebar,
+body.pagina-despesas .btn-voltar-flutuante {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+}
 
+body.pagina-despesas #toggle-sidebar {
+  left: 15px;
+  background: var(--bg-surface);
+  color: var(--primary);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
+body.pagina-despesas #app-wrapper.sidebar-closed #toggle-sidebar,
+body.pagina-despesas .btn-voltar-flutuante {
+  background: var(--bg-surface);
+  color: #e74c3c;
+  border-color: rgba(231, 76, 60, 0.72);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
+body.pagina-despesas #app-wrapper.has-floating-back.sidebar-closed #toggle-sidebar {
+  left: 15px;
+}
+
+body.pagina-despesas #app-wrapper.has-floating-back.sidebar-closed .btn-voltar-flutuante {
+  left: 64px;
+  transform: none;
+}
+
+body.pagina-despesas #app-wrapper.sidebar-closed #toggle-sidebar:hover,
+body.pagina-despesas .btn-voltar-flutuante:hover {
+  transform: none;
+  filter: brightness(1.07);
+}
+
+body.pagina-economias #toggle-sidebar,
+body.pagina-economias .btn-voltar-flutuante {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+}
+
+body.pagina-economias .btn-voltar-flutuante {
+  background: var(--bg-surface);
+  color: #f1c40f;
+  border-color: rgba(241, 196, 15, 0.78);
+  box-shadow: 0 8px 18px rgba(179, 133, 3, 0.18);
+  transform: none;
+}
+
+body.pagina-economias #toggle-sidebar {
+  left: 15px;
+}
+
+body.pagina-economias #app-wrapper:not(.sidebar-closed) #toggle-sidebar {
+  background: var(--bg-surface);
+  color: var(--primary);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+body.pagina-economias #app-wrapper.sidebar-closed #toggle-sidebar {
+  background: var(--bg-surface);
+  color: #f1c40f;
+  border-color: rgba(241, 196, 15, 0.78);
+  box-shadow: 0 8px 18px rgba(179, 133, 3, 0.18);
+}
+
+body.pagina-economias #app-wrapper.has-floating-back.sidebar-closed #toggle-sidebar {
+  left: 15px;
+}
+
+body.pagina-economias #app-wrapper.has-floating-back.sidebar-closed .btn-voltar-flutuante {
+  left: 64px;
+  transform: none;
+}
+
+body.pagina-economias #toggle-sidebar:hover,
+body.pagina-economias .btn-voltar-flutuante:hover {
+  transform: none;
+  filter: brightness(1.04);
+}
+
+body.light-mode.pagina-economias .btn-voltar-flutuante {
+  color: #b8860b;
+  border-color: rgba(184, 134, 11, 0.62);
+}
+
+body.light-mode.pagina-economias #app-wrapper.sidebar-closed #toggle-sidebar {
+  color: #b8860b;
+  border-color: rgba(184, 134, 11, 0.62);
+}
+
+body:not(.pagina-despesas):not(.pagina-economias) #app-wrapper:not(.sidebar-closed) #toggle-sidebar {
+  background: var(--bg-surface);
+  color: var(--primary);
+  border-color: var(--border-color);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+body:not(.pagina-despesas):not(.pagina-economias) #app-wrapper.sidebar-closed #toggle-sidebar {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+body:not(.pagina-despesas):not(.pagina-economias) #app-wrapper.sidebar-closed #toggle-sidebar:hover {
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
+}
+
+/* =========================================
+   LIGHT MODE - REFINO GLOBAL
+   ========================================= */
+body.light-mode {
+  background-color: var(--bg-body);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0) 40%),
+    radial-gradient(circle at 88% 84%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 44%),
+    linear-gradient(180deg, #6f7c98 0%, #66738f 100%);
+  background-attachment: fixed;
+}
+
+body.light-mode .main-content {
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.022) 0 2px, rgba(255, 255, 255, 0) 2px 8px),
+    linear-gradient(180deg, rgba(112, 124, 149, 0.38), rgba(102, 114, 138, 0.30));
+}
+
+body.light-mode #titulo-pagina {
+  background: linear-gradient(180deg, #f4f7ff 0%, #dde4f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 5px rgba(30, 45, 71, 0.28));
+}
+
+body.light-mode .sidebar {
+  box-shadow: 6px 0 20px rgba(26, 39, 61, 0.34);
+  border-right-color: rgba(224, 232, 245, 0.22);
+}
+
+body.light-mode .card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(246, 249, 255, 0.90));
+  border-color: rgba(91, 107, 135, 0.28);
+  box-shadow: 0 12px 26px rgba(33, 46, 71, 0.18);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body.light-mode .card:hover {
+  filter: none;
+  transform: translateY(-3px) scale(1.01);
+}
+
+body.light-mode .card-atrasado,
+body.light-mode .card-pendente,
+body.light-mode .card-recebido {
+  border-bottom-width: 1px;
+  box-shadow: 0 12px 24px rgba(31, 44, 69, 0.18);
+}
+
+body.light-mode .card-atrasado::before,
+body.light-mode .card-pendente::before,
+body.light-mode .card-recebido::before {
+  content: none;
+}
+
+body.light-mode .card-atrasado p { color: #6b3535; }
+body.light-mode .card-pendente p { color: #875b27; }
+body.light-mode .card-recebido p { color: #2d5949; }
+
+body.light-mode #btn-abrir-cadastro {
+  background: linear-gradient(135deg, #5d91ea, #4478d2);
+  box-shadow: 0 10px 22px rgba(35, 63, 115, 0.34);
+}
+
+body.light-mode #btn-abrir-cadastro:hover {
+  box-shadow: 0 12px 24px rgba(35, 63, 115, 0.42);
+}
+
+body.light-mode .busca-container input {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(101, 116, 141, 0.32);
+  color: #4a5771;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 8px 16px rgba(36, 49, 73, 0.16);
+}
+
+body.light-mode .busca-container input::placeholder {
+  color: #6c7891;
+}
+
+body.light-mode .tab-btn {
+  background: linear-gradient(180deg, rgba(120, 132, 157, 0.96), rgba(105, 118, 143, 0.97));
+  border-color: rgba(148, 161, 187, 0.75);
+  color: #e8edf8;
+  box-shadow: 0 4px 10px rgba(30, 42, 65, 0.22);
+}
+
+body.light-mode .tab-btn.active,
+body.light-mode .tab-eco.active {
+  background: linear-gradient(135deg, #5f95ef, #467bd5);
+  color: #ffffff;
+  border-color: rgba(122, 157, 225, 0.88);
+  box-shadow: 0 8px 18px rgba(36, 64, 116, 0.34);
+}
+
+body.light-mode .tab-btn:hover {
+  border-color: rgba(150, 176, 223, 0.84);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .tabs .tab-btn:hover:not(.active) {
+  border-color: #5f95ef;
+  color: #5f95ef;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .tabs .tab-btn.active,
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .tabs .tab-btn.active:hover {
+  background: linear-gradient(135deg, #5f95ef, #467bd5);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 5px 15px rgba(52, 115, 206, 0.32);
+}
+
+body.light-mode .tabs-eco-container {
+  background: #d8e0ee;
+  border: 1px solid rgba(87, 105, 133, 0.22);
+}
+
+body.light-mode .painel-economias,
+body.light-mode .resumo-ano-tabela-wrap,
+body.light-mode .resumo-ano-grafico-wrap,
+body.light-mode .modal-content,
+body.light-mode .notificacoes-painel,
+body.light-mode .lista-item {
+  box-shadow: 0 10px 24px rgba(27, 41, 64, 0.22);
+  border-color: rgba(91, 109, 137, 0.22);
+}
+
+body.light-mode .notificacoes-trigger {
+  background: linear-gradient(160deg, #7e8ca8, #697791);
+  border-color: rgba(214, 224, 239, 0.30);
+  color: #f4e9c9;
+  box-shadow: 0 10px 20px rgba(27, 39, 60, 0.30);
+}
+
+body.light-mode .notificacoes-trigger i {
+  color: #f4e9c9;
+}
+
+body.light-mode .notificacoes-badge {
+  background: #efe3c4;
+  color: #705a2f;
+  border-color: rgba(112, 90, 47, 0.34);
+}
+
+body.light-mode .resumo-ano-tabela tbody tr:hover {
+  background: rgba(70, 102, 158, 0.10);
+}
+
+body.light-mode .btn-mini:hover,
+body.light-mode .btn-mini-alt:hover,
+body.light-mode .btn-mini-eco:hover {
+  background: rgba(74, 112, 176, 0.12);
+}
+
+body.light-mode.pagina-despesas #btn-abrir-cadastro {
+  background: linear-gradient(135deg, #c84c43, #ab352d);
+  border: 1px solid rgba(182, 80, 74, 0.56);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(156, 57, 54, 0.28);
+}
+
+body.light-mode.pagina-despesas #btn-abrir-cadastro:hover {
+  background: linear-gradient(135deg, #d25a50, #b83e35);
+  box-shadow: 0 12px 24px rgba(156, 57, 54, 0.34);
+}
+
+/* =========================================
+   DESPESAS - NOTIFICACOES (LIGHT MODE)
+   ========================================= */
+body.light-mode.pagina-despesas .notificacoes-trigger {
+  background: #e7d8b5;
+  border-color: rgba(124, 101, 58, 0.40);
+  color: #8d5f1f;
+  box-shadow: 0 8px 16px rgba(74, 57, 28, 0.18);
+}
+
+body.light-mode.pagina-despesas .notificacoes-trigger i {
+  color: #8d5f1f;
+}
+
+body.light-mode.pagina-despesas .notificacoes-hoje.aberto .notificacoes-trigger {
+  border-color: rgba(141, 95, 31, 0.62);
+}
+
+body.light-mode.pagina-despesas .notificacoes-badge {
+  background: #d9c38d;
+  color: #5a431e;
+  border-color: rgba(124, 101, 58, 0.46);
+}
+
+body.light-mode.pagina-despesas .notificacoes-painel {
+  background: #f3ead2;
+  border-color: rgba(124, 101, 58, 0.34);
+  border-top-color: #b8860b;
+  box-shadow: 0 12px 24px rgba(74, 57, 28, 0.16);
+}
+
+body.light-mode.pagina-despesas .notificacoes-header {
+  color: #4f3f25;
+}
+
+body.light-mode.pagina-despesas .notificacoes-header i {
+  color: #8d5f1f;
+}
+
+body.light-mode.pagina-despesas .notificacoes-secao-titulo {
+  color: #6a5430;
+}
+
+body.light-mode.pagina-despesas .notificacoes-secao.notificacao-atrasada .notificacoes-secao-titulo {
+  color: #9c3936;
+}
+
+body.light-mode.pagina-despesas .notificacoes-secao.notificacao-hoje .notificacoes-secao-titulo {
+  color: #8d5f1f;
+}
+
+body.light-mode.pagina-despesas .notificacoes-secao.notificacao-amanha .notificacoes-secao-titulo {
+  color: #48638f;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item {
+  background: #efe2c4;
+  border-color: rgba(124, 101, 58, 0.28);
+  border-left-width: 6px;
+  border-left-style: solid;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item.notificacao-atrasada {
+  background: #f3dfd9;
+  border-left-color: #b6504a;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item.notificacao-hoje {
+  background: #f3ead2;
+  border-left-color: #b8860b;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item.notificacao-amanha {
+  background: #e1e8f5;
+  border-left-color: #6383c7;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item-nome {
+  color: #433622;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item-data {
+  color: #735f3b;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item.notificacao-atrasada .notificacoes-item-valor {
+  color: #9c3936;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item.notificacao-hoje .notificacoes-item-valor {
+  color: #8d5f1f;
+}
+
+body.light-mode.pagina-despesas .notificacoes-item.notificacao-amanha .notificacoes-item-valor {
+  color: #48638f;
+}
+
+/* =========================================
+   LIGHT MODE - RESUMO ANUAL EM TOM PALHA
+   ========================================= */
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela-wrap,
+body.light-mode.pagina-resumo-ano .resumo-ano-grafico-wrap {
+  background: #f3ead2;
+  border-color: rgba(136, 112, 72, 0.32);
+  box-shadow: 0 8px 16px rgba(74, 57, 28, 0.12);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela-controles select,
+body.light-mode.pagina-resumo-ano .resumo-ano-grafico-controles select,
+body.light-mode.pagina-resumo-ano .btn-resumo-grafico,
+body.light-mode.pagina-resumo-ano .btn-resumo-ordenar,
+body.light-mode.pagina-resumo-ano .btn-mini {
+  background: #e7d8b5;
+  color: #4f3f25;
+  border-color: rgba(124, 101, 58, 0.38);
+  box-shadow: 0 4px 10px rgba(74, 57, 28, 0.10);
+}
+
+body.light-mode.pagina-resumo-ano .btn-resumo-grafico:hover,
+body.light-mode.pagina-resumo-ano .btn-resumo-ordenar:hover,
+body.light-mode.pagina-resumo-ano .btn-mini:hover {
+  background: #dcc89a;
+  border-color: rgba(124, 101, 58, 0.46);
+  color: #4a3a20;
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela th {
+  background: #e7d8b5;
+  color: #5f4a27;
+  border-bottom-color: rgba(124, 101, 58, 0.34);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela td {
+  color: #4b3c25;
+  border-bottom-color: rgba(124, 101, 58, 0.24);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="mes"] thead th:nth-child(1),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="mes"] tbody td:nth-child(1),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="recebido"] thead th:nth-child(2),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="recebido"] tbody td:nth-child(2),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="pendente"] thead th:nth-child(3),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="pendente"] tbody td:nth-child(3),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="liquido"] thead th:nth-child(4),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="liquido"] tbody td:nth-child(4),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] thead th:nth-child(5),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] tbody td:nth-child(5) {
+  background: rgba(198, 168, 112, 0.18);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="mes"] .resumo-tabela-linha-topo td:nth-child(1),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="recebido"] .resumo-tabela-linha-topo td:nth-child(2),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="pendente"] .resumo-tabela-linha-topo td:nth-child(3),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="liquido"] .resumo-tabela-linha-topo td:nth-child(4),
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela[data-metrica-ordenacao="despesasPagas"] .resumo-tabela-linha-topo td:nth-child(5) {
+  box-shadow: inset 0 0 0 1px rgba(124, 101, 58, 0.58), inset 0 0 0 999px rgba(247, 236, 210, 0.68);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-tabela tbody tr:hover {
+  background: rgba(197, 166, 108, 0.22);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-coluna-track {
+  background: #eadfc3;
+  border-color: rgba(124, 101, 58, 0.36);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-coluna-track.tem-negativo::after {
+  border-top-color: rgba(95, 74, 39, 0.35);
+}
+
+body.light-mode.pagina-resumo-ano .resumo-ano-coluna-mes,
+body.light-mode.pagina-resumo-ano .resumo-ano-coluna-valor.neutro,
+body.light-mode.pagina-resumo-ano .resumo-ano-insights,
+body.light-mode.pagina-resumo-ano .resumo-ano-melhor-mes.destaque-neutro {
+  color: #6a5430;
+}
+
+/* =========================================
+   LIGHT MODE - CONTRASTE GERAL (RESTANTE)
+   ========================================= */
+body.light-mode {
+  --text-main: #223146;
+  --text-muted: #4f6079;
+  --border-color: #98a8bf;
+  --card-border: rgba(70, 87, 114, 0.36);
+}
+
+body.light-mode .main-content,
+body.light-mode .card,
+body.light-mode .modal-content,
+body.light-mode .painel-economias,
+body.light-mode .item-agrupado,
+body.light-mode .item-extrato,
+body.light-mode .lista-item {
+  color: var(--text-main);
+}
+
+body.light-mode .busca-container input,
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+  border-color: rgba(95, 112, 140, 0.46);
+  color: #24344a;
+}
+
+body.light-mode .busca-container input::placeholder,
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+  color: #5d6f89;
+}
+
+body.light-mode .tab-btn:not(.active):not(:hover) {
+  background: linear-gradient(180deg, rgba(110, 124, 150, 0.98), rgba(97, 111, 137, 0.99));
+  border-color: rgba(107, 126, 157, 0.62);
+  color: #f5f8ff;
+}
+
+body.light-mode .contador-busca {
+  border-color: rgba(83, 99, 126, 0.50);
+  background: rgba(214, 223, 237, 0.74);
+  color: #1f2f44;
+}
+
+body.light-mode .info-valores,
+body.light-mode .data-extrato,
+body.light-mode .notificacoes-item-data,
+body.light-mode .despesa-data {
+  color: #556780;
+}
+
+body.light-mode .notificacoes-item-nome {
+  color: #24344a;
+}
+
+body.light-mode .notificacoes-item {
+  border-color: rgba(95, 112, 140, 0.34);
+}
+
+body.light-mode .close-modal {
+  color: #44556f;
+}
+
+/* =========================================
+   LIGHT MODE - BOTOES DA CARTEIRA (ECONOMIAS)
+   ========================================= */
+body.light-mode.pagina-economias #aba-carteira .botoes-acao {
+  align-items: stretch;
+  gap: 14px;
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao button {
+  min-height: 56px;
+  border: 1px solid rgba(60, 74, 97, 0.22);
+  box-shadow: 0 6px 14px rgba(45, 60, 86, 0.16);
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-depositar,
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-sacar {
+  flex: 0.94 1 0;
+  color: #f8fbff;
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-depositar {
+  background: linear-gradient(135deg, #3d7d67, #2f6654);
+  border-color: rgba(47, 102, 84, 0.55);
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-sacar {
+  background: linear-gradient(135deg, #944b4b, #7a3e3e);
+  border-color: rgba(122, 62, 62, 0.56);
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-transferir {
+  flex: 1.22 1 0;
+  background: linear-gradient(135deg, #c9a04d, #b48938);
+  border-color: rgba(129, 96, 35, 0.56);
+  color: #3f2f10;
+  font-size: 0.93rem;
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+  text-wrap: balance;
+  padding: 8px 12px;
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-transferir i {
+  color: #5e4315;
+}
+
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-depositar:hover,
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-sacar:hover,
+body.light-mode.pagina-economias #aba-carteira .botoes-acao .btn-transferir:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 10px 18px rgba(45, 60, 86, 0.20);
+}
+
+/* =========================================
+   SUBTITULOS - CONTRASTE LEGIVEL
+   ========================================= */
+body.pagina-despesas .subtitulo-despesas,
+body.pagina-economias .subtitulo-economias,
+body.pagina-resumo-ano .subtitulo-resumo-ano {
+  color: #c6d2e4;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.32);
+}
+
+body.light-mode.pagina-despesas .subtitulo-despesas,
+body.light-mode.pagina-economias .subtitulo-economias,
+body.light-mode.pagina-resumo-ano .subtitulo-resumo-ano {
+  color: #eef3ff;
+  text-shadow: 0 1px 2px rgba(28, 40, 60, 0.40);
+}
+
+/* =========================================
+   LIGHT MODE - NOTIFICACOES INDEX
+   ========================================= */
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-trigger {
+  background: linear-gradient(160deg, #f2f7ff, #dbe7f8);
+  border-color: rgba(114, 141, 186, 0.44);
+  color: #2e5f9d;
+  box-shadow: 0 8px 18px rgba(45, 69, 108, 0.20);
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-trigger i {
+  color: #2e5f9d;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-hoje.aberto .notificacoes-trigger {
+  border-color: rgba(95, 149, 239, 0.72);
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-badge {
+  background: #e0ecff;
+  color: #2f4f7c;
+  border-color: rgba(93, 126, 181, 0.44);
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-painel {
+  background: #e9f0fb;
+  border-color: rgba(112, 138, 179, 0.38);
+  border-top-color: #5f95ef;
+  box-shadow: 0 12px 24px rgba(41, 62, 98, 0.18);
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-header {
+  color: #2c3f5b;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-header i {
+  color: #2e5f9d;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-item {
+  background: #f2f7ff;
+  border-color: rgba(116, 141, 180, 0.38);
+  border-left-color: #5f95ef;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-item-nome {
+  color: #22354f;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-item-data {
+  color: #5c6f8b;
+}
+
+body.light-mode:not(.pagina-despesas):not(.pagina-economias):not(.pagina-resumo-ano) .notificacoes-item-valor {
+  color: #2e5f9d;
+}
+
+/* =========================================
+   RESUMO ECONOMIAS (2026)
+   ========================================= */
+body.pagina-resumo-economias .resumo-economias-main {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-top: 26px;
+}
+
+body.pagina-resumo-economias .resumo-economias-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+body.pagina-resumo-economias #titulo-resumo-economias {
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-weight: 900;
+  margin: 0;
+  color: #d7e9ff;
+  text-shadow: 0 1px 0 rgba(8, 13, 22, 0.35);
+}
+
+body.pagina-resumo-economias .subtitulo-resumo-economias {
+  margin: 0;
+  color: #c4d0e2;
+  max-width: 760px;
+  line-height: 1.4;
+}
+
+body.pagina-resumo-economias .resumo-economias-cards {
+  margin-bottom: 18px;
+}
+
+body.pagina-resumo-economias .card-despesas p {
+  color: var(--danger);
+}
+
+.resumo-economias-grafico-wrap,
+.resumo-economias-tabela-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.resumo-economias-grafico-titulo {
+  margin: 0 0 14px;
+  font-size: 1.08rem;
+  color: #cfe0f9;
+}
+
+.resumo-economias-legenda {
+  display: flex;
+  gap: 14px;
+  margin: 0 0 10px;
+  font-size: 0.82rem;
+  color: #b9cbe4;
+}
+
+.resumo-economias-legenda span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resumo-economias-legenda span:first-child i {
+  color: #3f95e6;
+}
+
+.resumo-economias-legenda span:last-child i {
+  color: #d7a54a;
+}
+
+.resumo-economias-grafico {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 10px;
+  align-items: end;
+  min-height: 260px;
+}
+
+.resumo-eco-coluna {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.resumo-eco-coluna-barras {
+  width: 100%;
+  min-height: 210px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 0 2px 8px;
+}
+
+.resumo-eco-bar {
+  min-height: 2px;
+  border-radius: 8px 8px 0 0;
+  transition: height 380ms var(--motion-ease), filter 220ms ease;
+}
+
+.resumo-eco-bar.positivo {
+  background: linear-gradient(180deg, #5ec8ff 0%, #2f83d8 100%);
+  box-shadow: 0 0 10px rgba(67, 163, 245, 0.32);
+}
+
+.resumo-eco-bar.negativo {
+  background: linear-gradient(180deg, #ff8676 0%, #d3473e 100%);
+  box-shadow: 0 0 10px rgba(220, 82, 73, 0.28);
+}
+
+.resumo-eco-bar.poupanca.positivo {
+  background: linear-gradient(180deg, #ffd86e 0%, #c2912c 100%);
+  box-shadow: 0 0 10px rgba(230, 177, 63, 0.28);
+}
+
+.resumo-eco-bar.poupanca.negativo {
+  background: linear-gradient(180deg, #b9a9ff 0%, #7e6be0 100%);
+  box-shadow: 0 0 10px rgba(130, 113, 222, 0.28);
+}
+
+.resumo-eco-coluna:hover .resumo-eco-bar {
+  filter: brightness(1.08);
+}
+
+.resumo-eco-coluna-mes {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #c7d6ea;
+}
+
+.resumo-economias-tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resumo-economias-tabela th,
+.resumo-economias-tabela td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 11px 10px;
+  text-align: left;
+}
+
+.resumo-economias-tabela th {
+  color: #c0d3ed;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.44px;
+}
+
+.resumo-economias-tabela td {
+  color: #e8f2ff;
+}
+
+body.light-mode.pagina-resumo-economias #titulo-resumo-economias {
+  color: #2f4668;
+  text-shadow: none;
+}
+
+body.light-mode.pagina-resumo-economias .subtitulo-resumo-economias {
+  color: #4f6788;
+}
+
+body.light-mode.pagina-resumo-economias .resumo-economias-grafico-wrap,
+body.light-mode.pagina-resumo-economias .resumo-economias-tabela-wrap {
+  background: #f2f6ff;
+  border-color: rgba(112, 136, 172, 0.34);
+  box-shadow: 0 10px 22px rgba(45, 66, 100, 0.14);
+}
+
+body.light-mode.pagina-resumo-economias .resumo-economias-grafico-titulo,
+body.light-mode.pagina-resumo-economias .resumo-eco-coluna-mes {
+  color: #49648a;
+}
+
+body.light-mode.pagina-resumo-economias .resumo-economias-legenda {
+  color: #4f6788;
+}
+
+body.light-mode.pagina-resumo-economias .resumo-eco-coluna-barras {
+  border-bottom-color: rgba(83, 108, 148, 0.28);
+}
+
+body.light-mode.pagina-resumo-economias .resumo-economias-tabela th {
+  color: #536f94;
+  border-bottom-color: rgba(83, 108, 148, 0.22);
+}
+
+body.light-mode.pagina-resumo-economias .resumo-economias-tabela td {
+  color: #2d4668;
+  border-bottom-color: rgba(83, 108, 148, 0.18);
+}
+
+@media (max-width: 960px) {
+  .resumo-economias-grafico {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .resumo-economias-grafico {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .resumo-eco-coluna-barras {
+    min-height: 170px;
+  }
+
+  .resumo-economias-tabela-wrap {
+    overflow-x: auto;
+  }
+}

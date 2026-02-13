@@ -9,15 +9,99 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+<section id="intro-splash" class="intro-splash" aria-hidden="true">
+  <canvas id="intro-splash-canvas" class="intro-splash-canvas" aria-hidden="true"></canvas>
+  <div class="intro-splash-brand" role="presentation">
+    <div class="intro-splash-logo-svg">
+      <svg viewBox="0 0 200 200" class="logo-svg-pro">
+        <defs>
+          <linearGradient id="hexGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#33d6ff"/>
+            <stop offset="25%" stop-color="#4fa0ff"/>
+            <stop offset="50%" stop-color="#ff3ca6"/>
+            <stop offset="75%" stop-color="#ffca45"/>
+            <stop offset="100%" stop-color="#8a5cff"/>
+          </linearGradient>
+
+          <filter id="outerGlow">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <clipPath id="hexInnerClip">
+            <polygon points="100,34 158,67 158,133 100,166 42,133 42,67"/>
+          </clipPath>
+        </defs>
+
+        <polygon class="hex-outer"
+          points="100,12 176,56 176,144 100,188 24,144 24,56"
+          fill="url(#hexGradient)"
+          filter="url(#outerGlow)"
+        />
+
+        <polygon class="hex-inner"
+          points="100,34 158,67 158,133 100,166 42,133 42,67"
+          fill="#121212"
+        />
+
+        <path class="arrow-pro"
+          d="M48 130 C 86 154, 104 132, 152 84"
+          fill="none"
+          stroke="#ffffff"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+
+        <g clip-path="url(#hexInnerClip)">
+          <rect class="bar-pro bar1" x="66" y="118" width="16" height="45" rx="4"/>
+          <rect class="bar-pro bar2" x="92" y="98" width="16" height="72" rx="4"/>
+          <rect class="bar-pro bar3" x="118" y="80" width="16" height="82" rx="4"/>
+        </g>
+
+        <path class="arrow-head-pro"
+          d="M158 76 L141 85 L153 97 Z"
+          fill="#ffffff"
+        />
+      </svg>
+    </div>
+    <div class="intro-splash-progress">
+      <span class="intro-splash-progress-fill"></span>
+    </div>
+    <button id="intro-splash-sound" class="intro-splash-sound" type="button">
+      tocar som
+    </button>
+  </div>
+  <div class="intro-splash-wordmark" aria-hidden="true">
+    <div class="intro-splash-wordmark-text">NEXO</div>
+  </div>
+</section>
+
+<section id="notificacoes-hoje" class="notificacoes-hoje" aria-live="polite" hidden>
+  <button id="btn-notificacoes-hoje" class="notificacoes-trigger" type="button" aria-label="Abrir notificacoes de pagamentos" aria-expanded="false" aria-controls="notificacoes-hoje-painel">
+    <i class="fa-solid fa-bell" aria-hidden="true"></i>
+    <span id="notificacoes-hoje-badge" class="notificacoes-badge">0</span>
+  </button>
+  <div id="notificacoes-hoje-painel" class="notificacoes-painel" hidden>
+    <div class="notificacoes-header">
+      <i class="fa-solid fa-bell" aria-hidden="true"></i>
+      <strong>Pagamentos de hoje</strong>
+    </div>
+    <ul id="notificacoes-hoje-lista" class="notificacoes-lista"></ul>
+  </div>
+</section>
 
 <div class="app-container sidebar-closed" id="app-wrapper">
   <div id="overlay-mobile" onclick="toggleSidebar()"></div>
 
-  <button id="toggle-sidebar" onclick="toggleSidebar()">&#9776;</button>
+  <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Abrir menu">
+    <img src="logo2.png" alt="" loading="lazy" decoding="async">
+  </button>
 
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header"><h2></h2></div>
-
     <div class="botoes-financeiros">
       <button class="btn-card btn-economias" onclick="window.location.href='economias.html'">
         <i class="fa-solid fa-piggy-bank"></i>
@@ -53,6 +137,7 @@
         <i class="fa-solid fa-triangle-exclamation"></i>
         <span>Zerar tudo</span>
       </button>
+
     </div>
   </aside>
 
@@ -81,14 +166,16 @@
       </button>
 
       <div class="busca-container">
-        <input type="text" id="buscaNome" placeholder="Buscar cliente em tudo...">
+        <input type="text" id="buscaNome" placeholder="Buscar por nome ou situacao (devendo, a pagar, pagos...)">
       </div>
 
       <div class="tabs">
-        <button class="tab-btn active" data-aba="atrasados" onclick="mudarAba('atrasados')">Devendo</button>
+        <button class="tab-btn active" data-aba="todos" onclick="mudarAba('todos')">Todos</button>
+        <button class="tab-btn" data-aba="atrasados" onclick="mudarAba('atrasados')">Devendo</button>
         <button class="tab-btn" data-aba="pendentes" onclick="mudarAba('pendentes')">A pagar</button>
         <button class="tab-btn" data-aba="pagos" onclick="mudarAba('pagos')">Pagos</button>
         <button class="tab-btn" data-aba="parcelados" onclick="mudarAba('parcelados')">Parcelados</button>
+        <span id="contador-busca" class="contador-busca" aria-live="polite" hidden></span>
       </div>
     </header>
 
@@ -133,14 +220,19 @@
     <input type="hidden" id="edit-id">
     <div class="form-edit">
       <label>Nome</label><input type="text" id="edit-nome">
+      <label>WhatsApp</label><input type="tel" id="edit-telefone" placeholder="Numero com DDD">
       <div style="display:flex; gap:10px;">
-        <div style="flex:1"><label>Total</label><input type="number" id="edit-valor" step="0.01"></div>
-        <div style="flex:1"><label>Pago</label><input type="number" id="edit-pago-parcial" step="0.01"></div>
+        <div style="flex:1"><label>Total</label><input type="text" id="edit-valor" inputmode="decimal" placeholder="0,00"></div>
+        <div style="flex:1"><label>Pago</label><input type="text" id="edit-pago-parcial" inputmode="decimal" placeholder="0,00"></div>
       </div>
       <label>Data</label><input type="date" id="edit-data">
       <button class="btn-salvar-modal" onclick="salvarEdicao()">Atualizar dados</button>
     </div>
   </div>
+</div>
+
+<div class="brand-logo brand-logo--watermark" aria-hidden="true">
+  <img src="logo2.png" alt="" loading="lazy" decoding="async">
 </div>
 
 <script src="common.js"></script>

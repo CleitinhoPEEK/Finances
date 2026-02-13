@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumo Economias</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="pagina-resumo-economias">
+  <div class="app-container sidebar-closed" id="app-wrapper">
+    <div id="overlay-mobile" onclick="toggleSidebar()"></div>
+
+    <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Abrir menu">
+      <img src="logo2.png" alt="" loading="lazy" decoding="async">
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="botoes-financeiros">
+        <button class="btn-card btn-voltar-sidebar" onclick="irParaInicio()" aria-label="Ir para inicio">
+          <i class="fa-solid fa-house"></i>
+          <span>Inicio</span>
+        </button>
+
+        <button class="btn-card btn-economias" onclick="window.location.href='economias.html'" aria-label="Ir para economias">
+          <i class="fa-solid fa-piggy-bank"></i>
+          <span>Economias</span>
+        </button>
+
+        <button class="btn-card btn-despesas" onclick="window.location.href='despesas.html'" aria-label="Ir para despesas">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <span>Despesas</span>
+        </button>
+      </div>
+
+      <div class="backup-area">
+        <button id="btn-tema" class="btn-tema-toggle" onclick="alternarTema()">
+          Mudar tema
+        </button>
+
+        <button class="btn-backup btn-backup-export" onclick="exportarDados()">
+          <i class="fa-solid fa-file-export"></i>
+          <span>Exportar backup</span>
+        </button>
+        <button class="btn-backup btn-backup-import" onclick="document.getElementById('input-import').click()">
+          <i class="fa-solid fa-file-import"></i>
+          <span>Importar backup</span>
+        </button>
+        <input type="file" id="input-import" style="display:none" onchange="importarDados(event)" accept=".json">
+
+        <hr class="backup-divider">
+
+        <button class="btn-reset" onclick="resetarSistema()">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Zerar tudo</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content resumo-economias-main">
+      <header class="resumo-economias-header">
+        <h1 id="titulo-resumo-economias">Resumo de economias</h1>
+        <p class="subtitulo-resumo-economias">Visao anual dos 12 meses: saldo disponivel da carteira e evolucao da poupanca.</p>
+      </header>
+
+      <section class="dashboard resumo-economias-cards">
+        <div class="card card-pendente">
+          <h3>Total recebido (12 meses)</h3>
+          <p id="resumo-eco-total-recebido">R$ 0,00</p>
+        </div>
+        <div class="card card-despesas">
+          <h3>Total em despesas (12 meses)</h3>
+          <p id="resumo-eco-total-despesas">R$ 0,00</p>
+        </div>
+        <div class="card card-recebido">
+          <h3>Saldo atual carteira</h3>
+          <p id="resumo-eco-saldo-carteira">R$ 0,00</p>
+        </div>
+        <div class="card card-geral">
+          <h3>Saldo atual poupanca</h3>
+          <p id="resumo-eco-saldo-poupanca">R$ 0,00</p>
+        </div>
+      </section>
+
+      <section class="resumo-economias-grafico-wrap">
+        <h2 class="resumo-economias-grafico-titulo">Disponivel x poupanca por mes</h2>
+        <div class="resumo-economias-legenda">
+          <span><i class="fa-solid fa-square"></i> Disponivel</span>
+          <span><i class="fa-solid fa-square"></i> Poupanca</span>
+        </div>
+        <div id="resumo-economias-grafico" class="resumo-economias-grafico"></div>
+      </section>
+
+      <section class="resumo-economias-tabela-wrap">
+        <table class="resumo-economias-tabela">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Disponivel</th>
+              <th>Poupanca</th>
+              <th>Acumulado poupanca</th>
+            </tr>
+          </thead>
+          <tbody id="resumo-economias-corpo"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="resumo-economias.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumo Anual</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="pagina-resumo-ano">
+  <div class="app-container sidebar-closed" id="app-wrapper">
+    <div id="overlay-mobile" onclick="toggleSidebar()"></div>
+
+    <button id="toggle-sidebar" onclick="toggleSidebar()" aria-label="Abrir menu">
+      <img src="logo2.png" alt="" loading="lazy" decoding="async">
+    </button>
+
+    <aside class="sidebar" id="sidebar">
+      <div class="botoes-financeiros">
+        <button class="btn-card btn-voltar-sidebar" onclick="irParaInicio()" aria-label="Ir para inicio">
+          <i class="fa-solid fa-house"></i>
+          <span>Inicio</span>
+        </button>
+
+        <button class="btn-card btn-economias" onclick="window.location.href='economias.html'">
+          <i class="fa-solid fa-piggy-bank"></i>
+          <span>Economias</span>
+        </button>
+
+        <button class="btn-card btn-despesas" onclick="window.location.href='despesas.html'">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <span>Despesas</span>
+        </button>
+      </div>
+
+      <div class="backup-area">
+        <button id="btn-tema" class="btn-tema-toggle" onclick="alternarTema()">
+          Mudar tema
+        </button>
+
+        <button class="btn-backup btn-backup-export" onclick="exportarDados()">
+          <i class="fa-solid fa-file-export"></i>
+          <span>Exportar backup</span>
+        </button>
+        <button class="btn-backup btn-backup-import" onclick="document.getElementById('input-import').click()">
+          <i class="fa-solid fa-file-import"></i>
+          <span>Importar backup</span>
+        </button>
+        <input type="file" id="input-import" style="display:none" onchange="importarDados(event)" accept=".json">
+
+        <hr class="backup-divider">
+
+        <button class="btn-reset" onclick="resetarSistema()">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Zerar tudo</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content resumo-ano-main">
+      <header class="resumo-ano-header">
+        <div class="brand-logo brand-logo--hero" aria-hidden="true">
+          <img src="logo2.png" alt="" loading="lazy" decoding="async">
+        </div>
+        <h1 id="titulo-resumo-ano">Resumo anual</h1>
+        <p class="subtitulo-resumo-ano">Visao consolidada por mes de recebimentos, pendencias e despesas.</p>
+      </header>
+
+      <section class="dashboard resumo-ano-cards">
+        <div class="card">
+          <h3>Recebido no ano</h3>
+          <p id="resumo-total-recebido">R$ 0,00</p>
+        </div>
+        <div class="card">
+          <h3>Pendente no ano</h3>
+          <p id="resumo-total-pendente">R$ 0,00</p>
+        </div>
+        <div class="card">
+          <h3>Lucro no ano</h3>
+          <p id="resumo-total-lucro">R$ 0,00</p>
+        </div>
+        <div class="card">
+          <h3>Despesas pagas</h3>
+          <p id="resumo-total-despesas">R$ 0,00</p>
+        </div>
+      </section>
+
+      <div class="resumo-ano-visualizacao">
+        <button id="btn-alternar-grafico" class="btn-card btn-resumo-grafico" type="button" onclick="alternarGraficoResumo()">
+          <i class="fa-solid fa-chart-column"></i>
+          <span>Ver grafico</span>
+        </button>
+      </div>
+
+      <div class="resumo-ano-tabela-controles">
+        <label for="resumo-tabela-metrica">Ordenar planilha por</label>
+        <select id="resumo-tabela-metrica">
+          <option value="recebido">Maior valor recebido</option>
+          <option value="pendente">Maior pendente</option>
+          <option value="liquido">Maior lucro</option>
+          <option value="despesasPagas">Maior despesa</option>
+          <option value="mes">Mes</option>
+        </select>
+        <button id="btn-ordenar-tabela-resumo" class="btn-card btn-resumo-ordenar" type="button" onclick="alternarOrdemTabelaResumo()">
+          <i class="fa-solid fa-arrow-down-wide-short"></i>
+          <span>Decrescente</span>
+        </button>
+      </div>
+
+      <section id="resumo-ano-tabela-wrap" class="resumo-ano-tabela-wrap">
+        <table class="resumo-ano-tabela" id="tabela-resumo-ano">
+          <thead>
+            <tr>
+              <th>Mes</th>
+              <th>Recebido</th>
+              <th>Pendente</th>
+              <th>Lucro</th>
+              <th>Desp. pagas</th>
+              <th>Acoes</th>
+            </tr>
+          </thead>
+          <tbody id="resumo-ano-corpo"></tbody>
+        </table>
+      </section>
+
+      <section id="resumo-ano-grafico-wrap" class="resumo-ano-grafico-wrap resumo-ano-painel-oculto" aria-live="polite" aria-hidden="true">
+        <h2 id="resumo-ano-grafico-titulo" class="resumo-ano-grafico-titulo">Rendimento por mes (lucro)</h2>
+        <div class="resumo-ano-grafico-controles">
+          <label for="resumo-grafico-modo">Modo do grafico</label>
+          <select id="resumo-grafico-modo">
+            <option value="lucro_mes">Lucro por mes (Jan a Dez)</option>
+            <option value="pior_mes">Pior mes (lucro)</option>
+            <option value="faturamento_decrescente">Faturamento decrescente</option>
+            <option value="faturamento_crescente">Faturamento crescente</option>
+            <option value="lucro_decrescente">Maior lucro primeiro</option>
+            <option value="lucro_crescente">Menor lucro primeiro</option>
+            <option value="maior_lucro">Destaque: maior lucro</option>
+            <option value="menor_lucro">Destaque: menor lucro</option>
+            <option value="despesas_decrescente">Despesas pagas decrescente</option>
+            <option value="pendente_decrescente">Pendencias maiores primeiro</option>
+          </select>
+        </div>
+        <p id="resumo-ano-melhor-mes" class="resumo-ano-melhor-mes">-</p>
+        <p id="resumo-ano-insights" class="resumo-ano-insights">-</p>
+        <div id="resumo-ano-grafico-lista" class="resumo-ano-grafico-lista"></div>
+      </section>
+
+      <div class="brand-logo brand-logo--watermark" aria-hidden="true">
+        <img src="logo2.png" alt="" loading="lazy" decoding="async">
+      </div>
+    </main>
+  </div>
+
+  <script src="common.js"></script>
+  <script src="resumo-ano.js"></script>
+</body>
+</html>

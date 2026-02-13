@@ -1,5 +1,8 @@
 (function attachFinCommon(global) {
     const LIMITE_HISTORICO_PADRAO = 400;
+    const DURACAO_ENTRADA_PAGINA_PADRAO = 860;
+    const CLASSE_ENTRADA_PAGINA = 'page-open-enter';
+    const CLASSE_ENTRADA_PAGINA_ATIVA = 'page-open-enter-active';
     const NOMES_MESES = Object.freeze([
         'Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho',
         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
@@ -37,8 +40,36 @@
         setTimeout(() => URL.revokeObjectURL(url), 1500);
     };
 
+    const iniciarAnimacaoEntradaPagina = (duracaoMs = DURACAO_ENTRADA_PAGINA_PADRAO) => {
+        const body = global.document?.body;
+        if (!body) return;
+        if (body.dataset.pageOpenAnimated === '1') return;
+
+        const reduzirMovimento = global.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+        if (reduzirMovimento) {
+            body.dataset.pageOpenAnimated = '1';
+            return;
+        }
+
+        body.dataset.pageOpenAnimated = '1';
+        body.classList.add(CLASSE_ENTRADA_PAGINA);
+
+        global.requestAnimationFrame(() => {
+            global.requestAnimationFrame(() => {
+                body.classList.add(CLASSE_ENTRADA_PAGINA_ATIVA);
+            });
+        });
+
+        const limpezaMs = Math.max(420, Number(duracaoMs) || DURACAO_ENTRADA_PAGINA_PADRAO);
+        global.setTimeout(() => {
+            body.classList.remove(CLASSE_ENTRADA_PAGINA);
+            body.classList.remove(CLASSE_ENTRADA_PAGINA_ATIVA);
+        }, limpezaMs + 140);
+    };
+
     global.FinCommon = Object.freeze({
         LIMITE_HISTORICO_PADRAO,
+        DURACAO_ENTRADA_PAGINA_PADRAO,
         NOMES_MESES,
         getEl,
         formatarMoeda,
@@ -48,6 +79,7 @@
         getHojeLocal,
         escapeHtml,
         limitarHistorico,
-        baixarJson
+        baixarJson,
+        iniciarAnimacaoEntradaPagina
     });
 })(window);
